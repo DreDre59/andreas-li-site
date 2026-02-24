@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(which node:*)",
+      "Bash(echo PATH: $PATH:*)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\" && cd \"/c/Users/andre/Personal Projects/Codebase\" && npx create-next-app@latest . --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --no-turbopack 2>&1)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\" && cd \"/c/Users/andre/Personal Projects/Codebase\" && npm install 2>&1)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\" && cd \"/c/Users/andre/Personal Projects/Codebase\" && npm install next-mdx-remote 2>&1)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\" && cd \"/c/Users/andre/Personal Projects/Codebase\" && npm run build 2>&1)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\" && cd \"/c/Users/andre/Personal Projects/Codebase\" && npm run dev 2>&1)",
+      "Bash(sleep 10 && curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000 2>&1)"
+    ]
+  }
+}

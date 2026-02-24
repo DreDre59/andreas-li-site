@@ -1,0 +1,55 @@
+---
+title: "Autonomous Line-Following Robot"
+description: "A PID-controlled differential-drive robot that navigates a track using IR sensors and an STM32 microcontroller."
+date: "2025-01-15"
+tags: ["Embedded C", "STM32", "PID Control", "PCB Design"]
+thumbnail: "thumbnail.jpg"
+featured: true
+---
+
+## Overview
+
+This project was my first real dive into embedded control systems — designing and building a line-following robot from scratch, from schematic to assembled PCB to tuned PID loop.
+
+<Callout type="info">
+  Built as part of a university competition. The robot had to complete a figure-8 track in under 30 seconds.
+</Callout>
+
+## Hardware
+
+The brain of the robot is an **STM32F103** microcontroller, chosen for its abundant timers and hardware PWM channels. The sensor array uses 8 IR reflectance sensors arranged linearly beneath the chassis.
+
+Motors are driven by a dual H-bridge (L298N), though I'd use a DRV8833 or similar FET-based driver next time to reduce the voltage drop.
+
+<ProjectImage
+  src="/content/projects/line-following-robot/thumbnail.jpg"
+  alt="Assembled line-following robot"
+  caption="The finished robot on the competition track."
+/>
+
+## Control Algorithm
+
+The robot uses a weighted position algorithm to compute a single error signal from the 8-sensor array, then feeds that into a PD controller (derivative term was sufficient — integral caused oscillation on tight corners).
+
+```c
+float compute_error(uint8_t sensors[8]) {
+    int32_t weighted_sum = 0;
+    int32_t total = 0;
+    for (int i = 0; i < 8; i++) {
+        weighted_sum += (int32_t)sensors[i] * (i - 3) * 1000;
+        total += sensors[i];
+    }
+    if (total == 0) return last_error; // lost line
+    return (float)weighted_sum / total;
+}
+```
+
+## Results
+
+The robot successfully completed the track in **23.4 seconds**, placing 2nd in the competition. The biggest challenge was tuning the derivative gain — too high and it chattered, too low and it couldn't handle the tight inner curve.
+
+## What I'd Do Differently
+
+- Use a more capable MCU with floating-point hardware (STM32F4 family)
+- Design the sensor array as a separate daughter board for easier recalibration
+- Add encoders for closed-loop speed control rather than open-loop PWM duty cycle
