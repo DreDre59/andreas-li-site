@@ -1,30 +1,34 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque, DM_Mono } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
+import TopNav from "@/components/TopNav";
 import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "700", "800"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmMono = DM_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Name — Mechatronics & Robotics Engineer",
-    template: "%s | Your Name",
+    default: "Andreas Li — Mechatronics & Robotics Engineer",
+    template: "%s | Andreas Li",
   },
   description:
-    "Personal portfolio of a mechatronics and robotics engineering professional.",
+    "Personal portfolio of Andreas Li, a mechatronics and robotics engineering professional.",
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Your Name",
+    siteName: "Andreas Li",
   },
 };
 
@@ -36,15 +40,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100`}
+        className={`${bricolage.variable} ${dmMono.variable} antialiased bg-white text-neutral-900`}
       >
-        <Sidebar />
-        <main className="lg:pl-56 pt-14 lg:pt-0 min-h-screen">
-          <div className="max-w-3xl mx-auto px-6 py-12">
-            {children}
-          </div>
-          <Footer />
+        <TopNav />
+        <main className="pt-14 min-h-screen">
+          {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

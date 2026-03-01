@@ -93,40 +93,32 @@ The project has been fully scaffolded and builds successfully (`npm run build` p
 > Note: `npx create-next-app` was bypassed due to the directory name "Codebase" containing capitals (npm naming restriction). All config files were created manually.
 > Node.js is at `C:\Program Files\nodejs\` — not on the default bash PATH. Prefix commands with `export PATH="/c/Program Files/nodejs:$PATH"` or run from a standard terminal.
 
-**Phase 1.5: Design System Update — PENDING**
+**Phase 1.5: Design System Update — COMPLETE**
 
-The existing Phase 1 scaffold uses a sidebar layout with Geist fonts. It needs to be updated to match the new design system:
+All design system updates have been applied. The site uses Bricolage Grotesque + DM Mono fonts, a fixed top nav, neutral color palette, and sharp-corner component patterns throughout.
 
-- [ ] Replace Geist fonts with Bricolage Grotesque + DM Mono (Google Fonts)
-- [ ] Replace sidebar navigation with top navigation bar (name left, links + resume button right)
-- [ ] Update hero section: large bold uppercase name, subtitle in monospace, em dash bullet highlights, keyword badges
-- [ ] Update experience timeline: square dots, medium-weight job titles (not bold uppercase), monospace dates
-- [ ] Update projects grid: masonry layout, sharp corners, hover reveal overlay
-- [ ] Update footer: add resume link alongside social links
-- [ ] Apply neutral color palette and sharp-corner component patterns throughout
-- [ ] Remove or repurpose Sidebar.tsx — replace with top nav component
-
-### What's been built (Phase 1 — needs design update)
+### What's been built
 
 | File/Directory | Description |
 |---|---|
 | `package.json` | Dependencies: Next.js 15, React 19, Tailwind 3, gray-matter, reading-time, next-mdx-remote, lucide-react |
 | `next.config.ts` | MDX support via `@next/mdx` with remark-gfm |
-| `tailwind.config.ts` | Dark mode: `class`, Geist font vars, content paths |
-| `app/layout.tsx` | Root layout — **needs font + nav update** |
+| `tailwind.config.ts` | Dark mode: `class`, Bricolage Grotesque + DM Mono font vars, content paths |
+| `app/layout.tsx` | Root layout with Bricolage Grotesque + DM Mono, TopNav + Footer |
 | `app/globals.css` | Tailwind directives + prose/code base styles |
-| `app/page.tsx` | Hero/About — **needs full redesign to match new design system** |
-| `app/experience/page.tsx` | Timeline layout driven by `data/experience.ts` — **needs styling update** |
-| `app/projects/page.tsx` | Projects listing — **needs masonry + hover reveal** |
-| `app/projects/[slug]/page.tsx` | MDX-rendered project pages via `next-mdx-remote/rsc` |
+| `app/page.tsx` | Single-page layout: Hero, Experience, Projects, Contact — all sections with anchor IDs |
+| `app/experience/page.tsx` | Standalone experience page (matches home page styling) |
+| `app/projects/[slug]/page.tsx` | MDX-rendered project pages, styled to match design system |
 | `app/blog/page.tsx` | Chronological blog list with reading time |
 | `app/blog/[slug]/page.tsx` | MDX-rendered blog posts via `next-mdx-remote/rsc` |
 | `app/gallery/page.tsx` | Photo gallery from `public/gallery/photos.json` |
-| `components/Sidebar.tsx` | **TO BE REPLACED** with top nav component |
-| `components/Footer.tsx` | Social icons + resume download — **needs resume link added** |
+| `components/TopNav.tsx` | Fixed top nav — name left, anchor links (experience/projects) + page links (blog/gallery) + resume button right, mobile hamburger |
+| `components/Footer.tsx` | Social icons + resume download link |
 | `components/ThemeToggle.tsx` | Dark/light toggle with `localStorage` + system preference fallback |
-| `components/ProjectsGrid.tsx` | Client component — **needs masonry layout + hover reveal** |
+| `components/ProjectsGallery.tsx` | Client component — masonry grid (CSS columns-3), hover reveal overlay, tag filters |
+| `components/ProjectsGrid.tsx` | Legacy client component (replaced by ProjectsGallery on home page) |
 | `components/GalleryGrid.tsx` | Client component — masonry grid + lightbox with keyboard nav |
+| `components/Sidebar.tsx` | Legacy sidebar (replaced by TopNav) |
 | `components/mdx/ProjectImage.tsx` | MDX component: optimized image with optional caption |
 | `components/mdx/VideoEmbed.tsx` | MDX component: YouTube/Vimeo embed |
 | `components/mdx/Callout.tsx` | MDX component: callout box |
@@ -166,19 +158,21 @@ The existing Phase 1 scaffold uses a sidebar layout with Geist fonts. It needs t
 - Resume button: filled black (bg-neutral-900), download icon + "RESUME" text
 - Mobile: collapses to hamburger menu
 
-### Page Structure
+### Page Structure (Single Scrollable Home Page)
 
 ```
-[Top Nav — fixed]
+[Top Nav — fixed, experience/projects use anchor links, blog/gallery are page links]
 [Hero — large name, subtitle, intro, highlights, socials]
 [── divider ──]
-[Experience — timeline]
+[Experience (#experience) — timeline with square grey dots, skills at bottom]
 [── divider ──]
-[Projects — masonry gallery with filters]
+[Projects (#projects) — masonry gallery with filters and hover reveal]
 [── divider ──]
-[Contact — heading, description, LinkedIn + Email buttons]
+[Contact (#contact) — heading, description, LinkedIn + Email buttons]
 [Footer — copyright, social links, resume link]
 ```
+
+Note: `/projects` listing page has been removed. Nav links to `/#projects` section. Individual project pages still at `/projects/[slug]`.
 
 ### Footer
 
@@ -208,9 +202,8 @@ npm run build      # Generates static output when output: 'export' is set in nex
 
 | Route | Purpose |
 |---|---|
-| `/` | Hero/About — intro, highlights, social links, resume download |
-| `/experience` | Timeline of roles from a data file |
-| `/projects` | Filterable masonry card grid |
+| `/` | Single-page: Hero, Experience (#experience), Projects (#projects), Contact (#contact) |
+| `/experience` | Standalone experience page (same styling as home section) |
 | `/projects/[slug]` | MDX project write-up |
 | `/blog` | Chronological post list |
 | `/blog/[slug]` | MDX blog post |

@@ -8,12 +8,12 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t border-neutral-200 dark:border-neutral-800 py-10 px-6">
-      <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-neutral-500 dark:text-neutral-400">
-          © {new Date().getFullYear()} Your Name. All rights reserved.
+    <footer className="border-t border-neutral-100 py-8 px-6">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="font-mono text-xs uppercase tracking-widest text-neutral-400">
+          © {new Date().getFullYear()} Andreas Li
         </p>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-5">
           {socialLinks.map(({ href, label, icon: Icon }) => (
             <a
               key={href}
@@ -21,17 +21,17 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors"
+              className="text-neutral-400 hover:text-neutral-900 transition-colors"
             >
-              <Icon size={16} />
+              <Icon size={15} />
             </a>
           ))}
           <a
             href="/resume.pdf"
             download
-            className="flex items-center gap-1.5 text-sm text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors"
+            className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
           >
-            <FileDown size={14} />
+            <FileDown size={13} />
             Resume
           </a>
         </div>

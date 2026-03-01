@@ -6,65 +6,53 @@ export const metadata: Metadata = {
   description: "Professional experience and internship history.",
 };
 
-function SkillTag({ label }: { label: string }) {
-  return (
-    <span className="inline-block px-2 py-0.5 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-medium">
-      {label}
-    </span>
-  );
-}
-
 export default function ExperiencePage() {
   return (
-    <div>
-      <p className="text-xs uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-4">
-        Experience
-      </p>
-      <h1 className="text-3xl font-bold tracking-tight mb-10">
-        Work History
-      </h1>
+    <div className="py-20 px-8 max-w-7xl mx-auto">
+      <div className="flex items-end justify-between mb-14">
+        <h1 className="font-display font-extrabold uppercase text-neutral-900 tracking-tight text-5xl leading-none">
+          Experience
+        </h1>
+        <span className="font-mono text-xs uppercase tracking-widest text-neutral-300 pb-1">
+          {String(experience.length).padStart(2, "0")} roles
+        </span>
+      </div>
 
-      <div className="relative">
-        {/* Timeline line */}
-        <div className="absolute left-0 top-2 bottom-2 w-px bg-neutral-200 dark:bg-neutral-800" />
-
-        <div className="space-y-12">
-          {experience.map((entry, i) => (
-            <div key={i} className="relative pl-8">
-              {/* Timeline dot */}
-              <div className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-neutral-400 dark:bg-neutral-600 -translate-x-[3px]" />
-
-              <div className="mb-3">
-                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
-                  <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
-                    {entry.role}
-                  </h2>
-                  <span className="text-neutral-500 dark:text-neutral-400 text-sm hidden sm:inline">
-                    —
-                  </span>
-                  <span className="text-neutral-700 dark:text-neutral-300 font-medium text-sm">
-                    {entry.company}
-                  </span>
-                </div>
-                <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-0.5">
-                  {entry.start} – {entry.end}
+      <div className="max-w-2xl">
+        {experience.map((entry, i) => (
+          <div key={i} className="flex gap-8">
+            <div className="flex flex-col items-center pt-2">
+              <div className="w-3 h-3 bg-neutral-300 shrink-0" />
+              <div className="w-px bg-neutral-200 flex-1 mt-2" />
+            </div>
+            <div className="pb-14">
+              <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">
+                {entry.start} — {entry.end}
+              </span>
+              <h2 className="font-display text-xl font-medium text-neutral-900 mt-2">
+                {entry.role}
+              </h2>
+              <p className="font-display text-sm text-neutral-500 mt-0.5 font-medium">
+                {entry.company}
+              </p>
+              {entry.description.split("\n\n").map((para, j) => (
+                <p key={j} className="font-display text-sm text-neutral-500 mt-3 leading-relaxed max-w-lg">
+                  {para}
                 </p>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 mb-4">
+              ))}
+              <div className="flex flex-wrap gap-2 mt-4">
                 {entry.skills.map((skill) => (
-                  <SkillTag key={skill} label={skill} />
-                ))}
-              </div>
-
-              <div className="space-y-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
-                {entry.description.split("\n\n").map((para, j) => (
-                  <p key={j}>{para}</p>
+                  <span
+                    key={skill}
+                    className="font-mono text-xs text-neutral-500 bg-neutral-50 border border-neutral-200 px-2.5 py-1 rounded-sm"
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

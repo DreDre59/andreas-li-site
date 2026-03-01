@@ -311,15 +311,18 @@ The owner already has a custom domain name purchased.
 - [x] Create global layout with navigation and footer
 - [x] Configure MDX processing pipeline and custom components
 
-### Phase 1.5: Design System Update — NEXT
-- [ ] Replace Geist fonts with Bricolage Grotesque + DM Mono
-- [ ] Replace sidebar navigation with fixed top navigation bar
-- [ ] Redesign hero section: large bold name, monospace subtitle, em dash highlights, keyword badges
-- [ ] Update experience timeline: square dots, medium-weight job titles, monospace dates
-- [ ] Update projects grid: masonry layout, sharp corners, hover reveal overlay
-- [ ] Add resume button to top nav and resume link to footer
-- [ ] Apply neutral color palette and sharp-corner patterns throughout
-- [ ] Add contact section above footer
+### Phase 1.5: Design System Update — ✅ COMPLETE
+- [x] Replace Geist fonts with Bricolage Grotesque + DM Mono
+- [x] Replace sidebar navigation with fixed top navigation bar
+- [x] Redesign hero section: large bold name, monospace subtitle, em dash highlights, keyword badges
+- [x] Update experience timeline: square dots, medium-weight job titles, monospace dates, skills at bottom
+- [x] Update projects grid: masonry layout (CSS columns-3), sharp corners, hover reveal overlay
+- [x] Add resume button to top nav and resume link to footer
+- [x] Apply neutral color palette and sharp-corner patterns throughout
+- [x] Add contact section above footer
+- [x] Merge hero, experience, projects, and contact into single scrollable home page with anchor nav
+- [x] Style individual project pages (`/projects/[slug]`) to match design system
+- [x] Remove standalone `/projects` listing page (nav links to `/#projects` section)
 
 ### Phase 2: Core Content Pages
 - [ ] Populate About/Hero section with real content

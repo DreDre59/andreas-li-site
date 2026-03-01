@@ -10,14 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
-      },
-      colors: {
-        accent: {
-          DEFAULT: "#3b82f6",
-          dark: "#60a5fa",
-        },
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        sans: ["var(--font-display)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       typography: {
         DEFAULT: {

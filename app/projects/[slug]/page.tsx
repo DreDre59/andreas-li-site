@@ -59,30 +59,30 @@ export default async function ProjectPage({ params }: Props) {
   const tags: string[] = (frontmatter.tags as string[]) ?? [];
 
   return (
-    <article>
+    <article className="py-20 px-8 max-w-3xl mx-auto">
       <Link
-        href="/projects"
-        className="inline-flex items-center gap-1.5 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mb-8"
+        href="/#projects"
+        className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors duration-200"
       >
-        <ArrowLeft size={14} />
+        <ArrowLeft size={12} />
         Back to Projects
       </Link>
 
-      <header className="mb-10">
-        <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-2">
-          {frontmatter.date as string} · {rt}
-        </p>
-        <h1 className="text-3xl font-bold tracking-tight mb-3">
+      <header className="mt-10 mb-12">
+        <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">
+          {frontmatter.date as string} — {rt}
+        </span>
+        <h1 className="font-display font-extrabold uppercase tracking-tight text-4xl text-neutral-900 leading-none mt-3 mb-4">
           {frontmatter.title as string}
         </h1>
-        <p className="text-neutral-500 dark:text-neutral-400 mb-4">
+        <p className="font-display text-sm text-neutral-500 leading-relaxed mb-6">
           {frontmatter.description as string}
         </p>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-medium"
+              className="font-mono text-xs text-neutral-500 bg-neutral-50 border border-neutral-200 px-2.5 py-1 rounded-sm"
             >
               {tag}
             </span>
@@ -90,7 +90,9 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </header>
 
-      <div className="prose prose-neutral dark:prose-invert max-w-none text-sm leading-relaxed">
+      <div className="border-t border-neutral-100 mb-12" />
+
+      <div className="prose prose-neutral max-w-none prose-headings:font-display prose-headings:font-extrabold prose-headings:uppercase prose-headings:tracking-tight prose-h2:text-xl prose-h3:text-lg prose-p:font-display prose-p:text-sm prose-p:text-neutral-500 prose-p:leading-relaxed prose-li:font-display prose-li:text-sm prose-li:text-neutral-500 prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-2 prose-strong:text-neutral-900 prose-code:font-mono prose-code:text-xs prose-img:rounded-none">
         {content}
       </div>
     </article>
