@@ -1,3 +1,4 @@
+import Image from "next/image";
 import experience from "@/data/experience";
 import { getAllProjects } from "@/lib/mdx";
 import ProjectsGallery from "@/components/ProjectsGallery";
@@ -65,14 +66,14 @@ export default function Home() {
           >
             Andreas
           </h1>
-          <div className="flex items-end gap-6">
+          <div className="flex items-end gap-2">
             <h1
               className="font-display font-extrabold uppercase text-neutral-900 leading-none"
               style={{ fontSize: "clamp(4rem, 11vw, 9rem)", letterSpacing: "-0.03em" }}
             >
               Li
             </h1>
-            <div className="pb-3 flex flex-col gap-0.5">
+            <div className="flex flex-col gap-0.5 -mb-[1em]">
               <span className="font-mono text-xs uppercase tracking-widest text-neutral-400">
                 Mechatronics &amp;
               </span>
@@ -83,54 +84,90 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-12 max-w-xl">
-          <p className="font-display text-neutral-600 leading-relaxed text-base">
-            i build things that move, think, and interact with the real world.
-            studying{" "}
-            <Badge variant="default">mechatronics engineering</Badge> at{" "}
-            <Badge variant="achievement">[University]</Badge>.
-          </p>
-        </div>
+        <div className="mt-12 flex flex-col md:flex-row gap-12 items-center">
+          {/* ── About & Highlights (left) ── */}
+          <div className="w-full md:w-1/2 space-y-10">
+            {/* ── About Me ── */}
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-neutral-400 mb-4">
+                About
+              </p>
+              <p className="font-display text-neutral-600 leading-relaxed text-base">
+                i build things that move, think, and interact with the real world.
+                studying{" "}
+                <Badge variant="default">mechatronics engineering</Badge> at the{" "}
+                <Badge variant="achievement">University of Waterloo</Badge>.
+              </p>
+              <p className="font-display text-neutral-500 leading-relaxed text-sm mt-4">
+                My work sits at the intersection of{" "}
+                <Badge variant="technical">mechanical design</Badge>,{" "}
+                <Badge variant="skill">embedded systems</Badge>, and{" "}
+                <Badge variant="hardware">robotics</Badge>. I like taking ideas from
+                concept to physical prototype — from CAD and circuit design through
+                firmware and integration testing.
+              </p>
+              <p className="font-display text-neutral-500 leading-relaxed text-sm mt-4">
+                Previously at{" "}
+                <Badge variant="company">Tesla</Badge>,{" "}
+                <Badge variant="company">UWaterloo SIRRL</Badge>, and{" "}
+                <Badge variant="company">Martinrea International</Badge>.
+                Always looking for the next challenge that blends software with the physical world.
+              </p>
+            </div>
 
-        <div className="mt-10 max-w-xl">
-          <p className="font-mono text-xs uppercase tracking-widest text-neutral-400 mb-4">
-            Highlights
-          </p>
-          <ul className="space-y-3">
-            {highlights.map((item, i) => (
-              <li
-                key={i}
-                className="font-display text-sm text-neutral-500 leading-relaxed flex gap-3"
+            {/* ── Highlights ── */}
+            <div>
+              <p className="font-mono text-xs uppercase tracking-widest text-neutral-400 mb-4">
+                Highlights
+              </p>
+              <ul className="space-y-3">
+                {highlights.map((item, i) => (
+                  <li
+                    key={i}
+                    className="font-display text-sm text-neutral-500 leading-relaxed flex gap-3"
+                  >
+                    <span className="text-neutral-300 shrink-0 mt-0.5 select-none">—</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* ── Profile Banner (right) ── */}
+          <div className="w-full md:w-1/2 shrink-0">
+            <Image
+              src="/photos/profile.jpeg"
+              alt="Profile banner"
+              width={1400}
+              height={400}
+              className="w-full h-auto"
+              priority
+            />
+            <div className="mt-4 flex items-center gap-5">
+              <a
+                href="https://github.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
               >
-                <span className="text-neutral-300 shrink-0 mt-0.5 select-none">—</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 flex items-center gap-5">
-            <a
-              href="https://github.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="mailto:your@email.com"
-              className="font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
-            >
-              Email
-            </a>
+                GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="mailto:your@email.com"
+                className="font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
+          >
+            Email
+          </a>
+            </div>
           </div>
         </div>
       </section>
@@ -149,25 +186,50 @@ export default function Home() {
           </span>
         </div>
 
-        <div className="max-w-2xl">
+        <div>
           {experience.map((entry, i) => (
-            <div key={i} className="flex gap-8">
-              <div className="flex flex-col items-center pt-2">
-                <div className="w-3 h-3 bg-neutral-300 shrink-0" />
-                <div className="w-px bg-neutral-200 flex-1 mt-2" />
+            <div key={i} className="flex flex-col md:flex-row gap-8 items-center pb-14">
+              {/* ── Image (left) ── */}
+              <div className="w-full md:w-2/5 shrink-0">
+                {entry.image ? (
+                  <Image
+                    src={`/photos/experience/${entry.image}`}
+                    alt={`${entry.company} photo`}
+                    width={600}
+                    height={400}
+                    className="w-full h-64 object-cover"
+                  />
+                ) : (
+                  <div className="w-full aspect-[3/2] bg-neutral-100 border border-neutral-200" />
+                )}
               </div>
-              <div className="pb-14">
+
+              {/* ── Text (right) ── */}
+              <div className="w-full md:w-3/5">
+                <div className="flex items-center gap-3 mb-2">
+                  {entry.logo && (
+                    <Image
+                      src={`/logos/${entry.logo}`}
+                      alt={`${entry.company} logo`}
+                      width={150}
+                      height={150}
+                      className="w-10 h-10 rounded-sm border border-neutral-200 shadow-sm object-contain shrink-0"
+                    />
+                  )}
+                  <div>
+                    <h3 className="font-display text-xl font-medium text-neutral-900">
+                      {entry.role}
+                    </h3>
+                    <p className="font-display text-sm text-neutral-500 font-medium">
+                      {entry.company}
+                    </p>
+                  </div>
+                </div>
                 <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">
                   {entry.start} — {entry.end}
                 </span>
-                <h3 className="font-display text-xl font-medium text-neutral-900 mt-2">
-                  {entry.role}
-                </h3>
-                <p className="font-display text-sm text-neutral-500 mt-0.5 font-medium">
-                  {entry.company}
-                </p>
                 {entry.description.split("\n\n").map((para, j) => (
-                  <p key={j} className="font-display text-sm text-neutral-500 mt-3 leading-relaxed max-w-lg">
+                  <p key={j} className="font-display text-sm text-neutral-500 mt-3 leading-relaxed">
                     {para}
                   </p>
                 ))}

@@ -6,8 +6,10 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Photo {
   src: string;
-  caption?: string;
+  title?: string;
+  location?: string;
   date?: string;
+  caption?: string;
 }
 
 interface Props {
@@ -35,21 +37,33 @@ export default function GalleryGrid({ photos }: Props) {
 
   return (
     <>
-      <div className="columns-2 sm:columns-3 gap-3 space-y-3">
+      <div className="columns-2 sm:columns-3 gap-4 space-y-4">
         {photos.map((photo, i) => (
           <button
             key={photo.src}
             onClick={() => setLightboxIndex(i)}
-            className="w-full break-inside-avoid rounded-lg overflow-hidden block focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="group w-full break-inside-avoid overflow-hidden block focus:outline-none focus:ring-2 focus:ring-neutral-900 relative"
           >
-            <div className="relative w-full">
-              <Image
-                src={photo.src}
-                alt={photo.caption ?? `Gallery photo ${i + 1}`}
-                width={400}
-                height={300}
-                className="w-full h-auto object-cover hover:opacity-90 transition-opacity"
-              />
+            <Image
+              src={photo.src}
+              alt={photo.title ?? photo.caption ?? `Gallery photo ${i + 1}`}
+              width={400}
+              height={300}
+              className="w-full h-auto object-cover transition-opacity"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <div className="text-left">
+                {photo.title && (
+                  <p className="font-mono text-xs font-medium text-white uppercase tracking-widest leading-tight">
+                    {photo.title}
+                  </p>
+                )}
+                {(photo.location || photo.date) && (
+                  <p className="font-mono text-xs text-neutral-400 uppercase tracking-widest mt-1">
+                    {[photo.location, photo.date].filter(Boolean).join(" — ")}
+                  </p>
+                )}
+              </div>
             </div>
           </button>
         ))}
@@ -88,18 +102,23 @@ export default function GalleryGrid({ photos }: Props) {
           >
             <Image
               src={photos[lightboxIndex].src}
-              alt={photos[lightboxIndex].caption ?? `Photo ${lightboxIndex + 1}`}
+              alt={photos[lightboxIndex].title ?? photos[lightboxIndex].caption ?? `Photo ${lightboxIndex + 1}`}
               width={1200}
               height={900}
-              className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+              className="w-full h-auto max-h-[80vh] object-contain"
             />
-            {photos[lightboxIndex].caption && (
-              <p className="mt-3 text-center text-sm text-neutral-300">
-                {photos[lightboxIndex].caption}
+            {(photos[lightboxIndex].title || photos[lightboxIndex].caption) && (
+              <p className="mt-3 text-center font-display text-sm text-neutral-300">
+                {photos[lightboxIndex].title ?? photos[lightboxIndex].caption}
               </p>
             )}
-            <p className="mt-1 text-center text-xs text-neutral-500">
-              {lightboxIndex + 1} / {photos.length}
+            {(photos[lightboxIndex].location || photos[lightboxIndex].date) && (
+              <p className="mt-1 text-center font-mono text-xs text-neutral-500 uppercase tracking-widest">
+                {[photos[lightboxIndex].location, photos[lightboxIndex].date].filter(Boolean).join(" — ")}
+              </p>
+            )}
+            <p className="mt-1 text-center font-mono text-xs text-neutral-500 tracking-widest">
+              {String(lightboxIndex + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
             </p>
           </div>
 

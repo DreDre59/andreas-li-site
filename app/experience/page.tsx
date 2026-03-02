@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import experience from "@/data/experience";
 
 export const metadata: Metadata = {
@@ -18,25 +19,50 @@ export default function ExperiencePage() {
         </span>
       </div>
 
-      <div className="max-w-2xl">
+      <div>
         {experience.map((entry, i) => (
-          <div key={i} className="flex gap-8">
-            <div className="flex flex-col items-center pt-2">
-              <div className="w-3 h-3 bg-neutral-300 shrink-0" />
-              <div className="w-px bg-neutral-200 flex-1 mt-2" />
+          <div key={i} className="flex flex-col md:flex-row gap-8 items-center pb-14">
+            {/* ── Image (left) ── */}
+            <div className="w-full md:w-2/5 shrink-0">
+              {entry.image ? (
+                <Image
+                  src={`/photos/experience/${entry.image}`}
+                  alt={`${entry.company} photo`}
+                  width={600}
+                  height={400}
+                  className="w-full h-64 object-cover"
+                />
+              ) : (
+                <div className="w-full aspect-[3/2] bg-neutral-100 border border-neutral-200" />
+              )}
             </div>
-            <div className="pb-14">
+
+            {/* ── Text (right) ── */}
+            <div className="w-full md:w-3/5">
+              <div className="flex items-center gap-3 mb-2">
+                {entry.logo && (
+                  <Image
+                    src={`/logos/${entry.logo}`}
+                    alt={`${entry.company} logo`}
+                    width={150}
+                    height={150}
+                    className="w-10 h-10 rounded-sm border border-neutral-200 shadow-sm object-contain shrink-0"
+                  />
+                )}
+                <div>
+                  <h2 className="font-display text-xl font-medium text-neutral-900">
+                    {entry.role}
+                  </h2>
+                  <p className="font-display text-sm text-neutral-500 font-medium">
+                    {entry.company}
+                  </p>
+                </div>
+              </div>
               <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">
                 {entry.start} — {entry.end}
               </span>
-              <h2 className="font-display text-xl font-medium text-neutral-900 mt-2">
-                {entry.role}
-              </h2>
-              <p className="font-display text-sm text-neutral-500 mt-0.5 font-medium">
-                {entry.company}
-              </p>
               {entry.description.split("\n\n").map((para, j) => (
-                <p key={j} className="font-display text-sm text-neutral-500 mt-3 leading-relaxed max-w-lg">
+                <p key={j} className="font-display text-sm text-neutral-500 mt-3 leading-relaxed">
                   {para}
                 </p>
               ))}

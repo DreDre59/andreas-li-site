@@ -4,33 +4,53 @@ export interface ExperienceEntry {
   start: string;
   end: string;
   skills: string[];
-  description: string; // supports markdown
+  logo?: string; // filename in public/logos/
+  image?: string; // filename in public/photos/experience/
+  description: string;
 }
 
 const experience: ExperienceEntry[] = [
   {
-    company: "Company Name",
-    role: "Robotics Software Intern",
+    company: "Tesla",
+    role: "Vehicle Design Engineering Intern",
     start: "May 2025",
     end: "Aug 2025",
-    skills: ["ROS2", "Python", "C++", "OpenCV", "Docker"],
-    description: `I worked on the autonomy stack for an industrial inspection robot, contributing to the perception and navigation pipelines.
+    skills: ["CAD", "GD&T", "DFMEA", "Root Cause Analysis", "Tolerance Analysis"],
+    logo: "Tesla_Logo.png",
+    image: "Tesla-Cybercab-Robovan.jpg",
+    description: `Contributed to vehicle design engineering on active programs, working closely with cross-functional teams across manufacturing, quality, and supply chain.
 
-My main project involved integrating a depth camera with ROS2's navigation stack to enable obstacle avoidance in unstructured environments. I wrote the point cloud preprocessing node in C++ and tuned the costmap parameters for the specific warehouse environment.
+Performed tolerance stack-up analyses and GD&T reviews for critical assemblies, identifying potential fit issues before prototype builds. Supported root cause investigations for field returns using structured problem-solving methods.
 
-I also helped migrate the team's CI pipeline to GitHub Actions, cutting build times by about 40% through better layer caching in Docker.`,
+Developed and maintained engineering documentation including DFMEAs and design verification plans, ensuring traceability across design iterations.`,
   },
   {
-    company: "Another Company",
-    role: "Embedded Systems Intern",
+    company: "UWaterloo SIRRL",
+    role: "Research Assistant",
     start: "Jan 2025",
     end: "Apr 2025",
-    skills: ["Embedded C", "STM32", "FreeRTOS", "SPI", "CAN Bus"],
-    description: `Developed firmware for a motor control board based on the STM32H7 microcontroller, targeting a brushless DC drive system.
+    skills: ["ROS2", "Python", "C++", "Computer Vision", "SLAM"],
+    logo: "Sirrl_Logo.png",
+    image: "Furhat_Robot.jpg",
+    description: `Conducted research in the Social and Intelligent Robotics Research Lab, focusing on mobile robot perception and human-robot interaction.
 
-I implemented a PID speed controller with anti-windup protection and a basic state machine for fault handling. Communication with the host system was over CAN Bus using a lightweight message protocol I designed and documented.
+Developed and tested perception pipelines using ROS2, integrating depth cameras and LiDAR for real-time obstacle detection and mapping. Contributed to SLAM algorithm benchmarking across indoor environments.
 
-The role gave me hands-on experience with real-time constraints — debugging race conditions and interrupt priority issues taught me a lot about FreeRTOS internals.`,
+Assisted in designing experiments for user studies evaluating robot navigation behavior in shared human spaces.`,
+  },
+  {
+    company: "Martinrea International",
+    role: "Mechatronics Engineering Intern",
+    start: "May 2024",
+    end: "Aug 2024",
+    skills: ["PLC Programming", "SolidWorks", "Embedded C", "Pneumatics", "HMI Design"],
+    logo: "Martinrea_Logo.png",
+    image: "amr-materialtransport.jpg",
+    description: `Worked on automation and manufacturing systems at a Tier 1 automotive parts supplier, supporting production line upgrades and troubleshooting.
+
+Programmed and debugged PLCs for automated assembly stations, improving cycle time consistency. Designed pneumatic circuit modifications and created updated SolidWorks models for fixture improvements.
+
+Developed HMI screens for operator interfaces and wrote embedded firmware for sensor monitoring modules deployed on the production floor.`,
   },
 ];
 

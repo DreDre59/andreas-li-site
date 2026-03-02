@@ -42,10 +42,12 @@ Neutral-only base palette with soft colored keyword badges:
 
 - **No border-radius** on cards, buttons, tags, or filter pills — sharp corners throughout
 - **Em dash (—)** bullets for highlight lists
-- **Square dots** on the experience timeline (not circles)
+- **Company logos as timeline markers** in the experience section — replaces square dots:
+  - 48x48, rounded-sm, border border-neutral-200, shadow-sm, rendered with `next/image`
+  - Stored in `public/logos/`: tesla.png, sirrl.png, martinrea.png
+  - Thin vertical line connects logos; stops at the last entry
 - **Hover reveal** on project cards — dark overlay with title, description, and tags
 - **Thin dividers** (border-t border-neutral-100) between major sections
-
 ---
 
 ## Tech Stack
@@ -86,6 +88,7 @@ Neutral-only base palette with soft colored keyword badges:
 **Requirements:**
 - Name "ANDREAS LI" displayed as a large, bold, uppercase heading (Bricolage Grotesque extrabold, responsive size clamp(4rem, 11vw, 9rem))
 - Subtitle "Mechatronics & Robotics Engineer" in DM Mono, small, uppercase, tracked, neutral-400
+- **Wide banner profile photo** between the name and intro text — full-width, ~288px (h-72) tall, object-cover with object-top positioning, sharp corners (rounded-none). Photo stored at `public/photos/profile.jpg`. Rendered with `next/image`.
 - 2–3 sentence intro with inline highlighted keyword badges (soft colored backgrounds)
 - Highlights section with em dash (—) bullet list of key accomplishments, each with a colored badge for the key term
 - Social links row: GitHub, LinkedIn, Email — styled as monospace uppercase links
@@ -103,7 +106,14 @@ Neutral-only base palette with soft colored keyword badges:
 
 **Requirements:**
 - **Vertical timeline layout** with each role as a node, ordered chronologically (most recent first)
-- Square dots (not circles) as timeline markers
+- **Company logos as timeline markers** on the left side — replaces square dots:
+  - 48x48, rounded-sm, border border-neutral-200, shadow-sm
+  - Rendered with `next/image`
+  - Stored in `public/logos/`:
+    - `tesla.png` — Tesla
+    - `sirrl.png` — UWaterloo SIRRL
+    - `martinrea.png` — Martinrea International
+  - Thin vertical line (w-px bg-neutral-200) connects logos; stops at the last entry
 - Each entry includes:
   - Company name (text-sm, neutral-500)
   - Duration in DM Mono (text-xs, neutral-400, uppercase tracking-widest, e.g., "MAY 2025 — AUG 2025")
@@ -111,7 +121,11 @@ Neutral-only base palette with soft colored keyword badges:
   - Skills/technologies as bordered tags (DM Mono, text-xs, border border-neutral-200)
   - A space for a brief multi-paragraph description (2–3 paragraphs, text-sm, neutral-500/600, relaxed leading, max-w-lg)
 - Keep this section on a single page (no sub-pages needed)
-- Data driven by `data/experience.ts` for easy updates, with the description field supporting line breaks for paragraphs
+- Data driven by `data/experience.ts` for easy updates; each entry includes a `logo` field (filename string)
+- **Actual experience entries (most recent first):**
+  1. **Tesla** — Vehicle Design Engineering Intern
+  2. **UWaterloo Social and Intelligent Robotics Research Lab (SIRRL)** — Research Assistant
+  3. **Martinrea International** — Mechatronics Engineering Intern
 
 ---
 
@@ -323,6 +337,13 @@ The owner already has a custom domain name purchased.
 - [x] Merge hero, experience, projects, and contact into single scrollable home page with anchor nav
 - [x] Style individual project pages (`/projects/[slug]`) to match design system
 - [x] Remove standalone `/projects` listing page (nav links to `/#projects` section)
+
+### Phase 1.75: Experience Logo Update & Profile Photo — NEXT
+- [ ] Add logo files to `public/logos/` (tesla.png, sirrl.png, martinrea.png)
+- [ ] Add `logo` field to `data/experience.ts` entries
+- [ ] Replace square timeline dots with company logo images (48x48, rounded-sm, border, shadow)
+- [ ] Connecting vertical line between logos, stopping at last entry
+- [ ] Add profile photo as wide banner in hero section (`public/photos/profile.jpg`)
 
 ### Phase 2: Core Content Pages
 - [ ] Populate About/Hero section with real content

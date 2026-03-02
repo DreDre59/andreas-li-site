@@ -67,11 +67,23 @@ Used in the About/hero highlights section. Soft colored backgrounds with matchin
 
 ### Component Patterns
 
+- **Wide banner profile photo** in the hero section, placed between the name/subtitle and the intro text:
+  - Full-width within max-w-7xl container, h-72, object-cover, object-top
+  - Sharp corners (no border-radius)
+  - Stored at `public/photos/profile.jpg`, rendered with `next/image`
+  - Adds mt-10 below the name, mt-12 above the intro
 - **No border-radius** on project cards, buttons, tags, or filter pills — sharp corners throughout for an architectural feel
 - **Em dash (—)** bullets for highlight lists, not numbers or standard bullets
-- **Monospace counters** for section metadata (e.g., "02 roles", "06 projects")
+- **Company logos as timeline markers** in the experience section — replaces square dots:
+  - Logos displayed at 48x48, rounded-sm, border border-neutral-200, subtle shadow
+  - Stored in `public/logos/`:
+    - `tesla.png` — Tesla
+    - `sirrl.png` — UWaterloo SIRRL
+    - `martinrea.png` — Martinrea International
+  - Thin vertical line connects logos down the timeline; line stops at the last entry
+  - Use `next/image` for rendering
+- **Monospace counters** for section metadata (e.g., "03 roles", "06 projects")
 - **Hover reveals** on project gallery cards — dark overlay with title, description, and tags
-- **Square timeline dots** (not circles) in the experience section
 - **Thin dividers** (border-t border-neutral-100) between major sections
 
 ## Tech Stack
@@ -96,6 +108,16 @@ The project has been fully scaffolded and builds successfully (`npm run build` p
 **Phase 1.5: Design System Update — COMPLETE**
 
 All design system updates have been applied. The site uses Bricolage Grotesque + DM Mono fonts, a fixed top nav, neutral color palette, and sharp-corner component patterns throughout.
+
+**Phase 1.75: Experience Logo Update — PENDING**
+
+- [ ] Add logo files to `public/logos/` (tesla.png, sirrl.png, martinrea.png)
+- [ ] Add a `logo` field to each entry in `data/experience.ts` (filename string, e.g., "tesla.png")
+- [ ] Update the experience timeline component to replace square dots with company logo images
+- [ ] Logo rendering: 48x48, rounded-sm, border border-neutral-200, shadow-sm, using `next/image`
+- [ ] Thin vertical line (w-px bg-neutral-200) connects logos; line stops at the last entry
+- [ ] Update both the home page experience section and the standalone `/experience` page
+- [ ] Add profile photo to hero section as wide banner (`public/photos/profile.jpg`, full-width, h-72, object-cover object-top)
 
 ### What's been built
 
@@ -123,10 +145,11 @@ All design system updates have been applied. The site uses Bricolage Grotesque +
 | `components/mdx/VideoEmbed.tsx` | MDX component: YouTube/Vimeo embed |
 | `components/mdx/Callout.tsx` | MDX component: callout box |
 | `lib/mdx.ts` | Server utilities: `getAllProjects()`, `getAllBlogPosts()`, slug discovery |
-| `data/experience.ts` | Experience entries — replace with real data |
+| `data/experience.ts` | Experience entries — **needs logo field added** |
 | `content/projects/line-following-robot/` | Sample project MDX |
 | `content/blog/first-pcb-lessons/` | Sample blog post MDX |
 | `public/gallery/photos.json` | Empty gallery manifest |
+| `public/logos/` | **TO BE ADDED** — tesla.png, sirrl.png, martinrea.png |
 
 ---
 
@@ -134,7 +157,10 @@ All design system updates have been applied. The site uses Bricolage Grotesque +
 
 - Top nav component — name ("Andreas Li"), GitHub/LinkedIn/email URLs
 - `app/page.tsx` — name, bio paragraphs, highlights list, social URLs
-- `data/experience.ts` — real internship/job entries
+- `data/experience.ts` — real internship/job entries:
+  1. Tesla — Vehicle Design Engineering Intern
+  2. UWaterloo SIRRL — Research Assistant
+  3. Martinrea International — Mechatronics Engineering Intern
 - Resume: add `public/resume.pdf`
 - Projects: replace sample with real MDX entries in `content/projects/`
 - Blog: replace sample with real posts in `content/blog/`
@@ -162,9 +188,9 @@ All design system updates have been applied. The site uses Bricolage Grotesque +
 
 ```
 [Top Nav — fixed, experience/projects use anchor links, blog/gallery are page links]
-[Hero — large name, subtitle, intro, highlights, socials]
+[Hero — large name, subtitle, wide banner profile photo, intro, highlights, socials]
 [── divider ──]
-[Experience (#experience) — timeline with square grey dots, skills at bottom]
+[Experience (#experience) — timeline with company logos as markers, skills at bottom]
 [── divider ──]
 [Projects (#projects) — masonry gallery with filters and hover reveal]
 [── divider ──]
@@ -228,10 +254,11 @@ content/
 
 Gallery images live in `public/gallery/` with an optional `photos.json` manifest.
 Resume PDF lives at `public/resume.pdf`.
+Company logos live in `public/logos/` (tesla.png, sirrl.png, martinrea.png).
 
 ### Data-Driven Sections
 
-Experience section is driven by a data file (`data/experience.ts`). Each entry has: company, role, start/end dates, skills tags (array), and a multi-paragraph description.
+Experience section is driven by a data file (`data/experience.ts`). Each entry has: company, role, start/end dates, skills tags (array), logo filename (string referencing `public/logos/`), and a multi-paragraph description.
 
 ### Custom MDX Components
 

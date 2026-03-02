@@ -59,30 +59,30 @@ export default async function BlogPostPage({ params }: Props) {
   const tags: string[] = (frontmatter.tags as string[]) ?? [];
 
   return (
-    <article>
+    <article className="py-20 px-8 max-w-7xl mx-auto">
       <Link
         href="/blog"
-        className="inline-flex items-center gap-1.5 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mb-8"
+        className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors mb-12"
       >
         <ArrowLeft size={14} />
         Back to Blog
       </Link>
 
-      <header className="mb-10">
-        <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-2">
+      <header className="mb-14 max-w-2xl">
+        <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">
           {frontmatter.date as string} · {rt}
-        </p>
-        <h1 className="text-3xl font-bold tracking-tight mb-3">
+        </span>
+        <h1 className="font-display font-extrabold uppercase text-neutral-900 tracking-tight text-5xl leading-none mt-4 mb-4">
           {frontmatter.title as string}
         </h1>
-        <p className="text-neutral-500 dark:text-neutral-400 mb-4">
+        <p className="font-display text-neutral-500 text-sm leading-relaxed mb-4">
           {frontmatter.description as string}
         </p>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-0.5 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 font-medium"
+              className="font-mono text-xs text-neutral-500 border border-neutral-200 px-2.5 py-1"
             >
               {tag}
             </span>
@@ -90,7 +90,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </header>
 
-      <div className="prose prose-neutral dark:prose-invert max-w-none text-sm leading-relaxed">
+      <div className="prose prose-neutral max-w-2xl text-sm leading-relaxed font-display">
         {content}
       </div>
     </article>
