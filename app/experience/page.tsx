@@ -7,6 +7,18 @@ export const metadata: Metadata = {
   description: "Professional experience and internship history.",
 };
 
+const companyHighlight: Record<string, string> = {
+  Tesla: "bg-rose-50 text-rose-800",
+  "UWaterloo SIRRL": "bg-violet-50 text-violet-800",
+  "Martinrea International": "bg-sky-50 text-sky-800",
+};
+
+const companyUrl: Record<string, string> = {
+  Tesla: "https://www.tesla.com/",
+  "UWaterloo SIRRL": "https://uwaterloo.ca/social-intelligent-robotics-research-lab/",
+  "Martinrea International": "https://www.martinrea.com/",
+};
+
 export default function ExperiencePage() {
   return (
     <div className="py-20 px-8 max-w-7xl mx-auto">
@@ -21,19 +33,19 @@ export default function ExperiencePage() {
 
       <div>
         {experience.map((entry, i) => (
-          <div key={i} className="flex flex-col md:flex-row gap-8 items-center pb-14">
+          <div key={i} className="flex flex-col md:flex-row gap-8 items-stretch pb-14">
             {/* ── Image (left) ── */}
-            <div className="w-full md:w-2/5 shrink-0">
+            <div className="w-full md:w-1/2 shrink-0">
               {entry.image ? (
                 <Image
                   src={`/photos/experience/${entry.image}`}
                   alt={`${entry.company} photo`}
                   width={600}
                   height={400}
-                  className="w-full h-64 object-cover"
+                  className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full aspect-[3/2] bg-neutral-100 border border-neutral-200" />
+                <div className="w-full h-full bg-neutral-100 border border-neutral-200" />
               )}
             </div>
 
@@ -50,11 +62,18 @@ export default function ExperiencePage() {
                   />
                 )}
                 <div>
-                  <h2 className="font-display text-xl font-medium text-neutral-900">
+                  <h2 className="font-display text-xl font-bold text-neutral-900">
                     {entry.role}
                   </h2>
-                  <p className="font-display text-sm text-neutral-500 font-medium">
-                    {entry.company}
+                  <p className="font-display text-sm font-bold">
+                    <a
+                      href={companyUrl[entry.company] || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-block px-1.5 py-0.5 font-medium text-sm hover:opacity-80 transition-opacity ${companyHighlight[entry.company] || "bg-neutral-100 text-neutral-700"}`}
+                    >
+                      {entry.company}
+                    </a>
                   </p>
                 </div>
               </div>
@@ -62,7 +81,7 @@ export default function ExperiencePage() {
                 {entry.start} — {entry.end}
               </span>
               {entry.description.split("\n\n").map((para, j) => (
-                <p key={j} className="font-display text-sm text-neutral-500 mt-3 leading-relaxed">
+                <p key={j} className="font-display text-sm text-neutral-500 mt-3 leading-relaxed font-medium">
                   {para}
                 </p>
               ))}
@@ -70,7 +89,9 @@ export default function ExperiencePage() {
                 {entry.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="font-mono text-xs text-neutral-500 bg-neutral-50 border border-neutral-200 px-2.5 py-1 rounded-sm"
+                    className={`font-mono text-xs px-2.5 py-1 rounded-sm border ${
+                      ({ Tesla: "bg-rose-50 text-rose-700 border-rose-200", "UWaterloo SIRRL": "bg-violet-50 text-violet-700 border-violet-200", "Martinrea International": "bg-sky-50 text-sky-700 border-sky-200" } as Record<string, string>)[entry.company] || "text-neutral-500 bg-neutral-50 border-neutral-200"
+                    }`}
                   >
                     {skill}
                   </span>

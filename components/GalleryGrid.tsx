@@ -37,19 +37,18 @@ export default function GalleryGrid({ photos }: Props) {
 
   return (
     <>
-      <div className="columns-2 sm:columns-3 gap-4 space-y-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {photos.map((photo, i) => (
           <button
             key={photo.src}
             onClick={() => setLightboxIndex(i)}
-            className="group w-full break-inside-avoid overflow-hidden block focus:outline-none focus:ring-2 focus:ring-neutral-900 relative"
+            className="group w-full overflow-hidden block focus:outline-none focus:ring-2 focus:ring-neutral-900 relative aspect-[4/3]"
           >
             <Image
               src={photo.src}
               alt={photo.title ?? photo.caption ?? `Gallery photo ${i + 1}`}
-              width={400}
-              height={300}
-              className="w-full h-auto object-cover transition-opacity"
+              fill
+              className="object-cover grayscale transition-all duration-500 ease-out group-hover:grayscale-0 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
               <div className="text-left">
@@ -97,7 +96,7 @@ export default function GalleryGrid({ photos }: Props) {
           </button>
 
           <div
-            className="relative max-w-4xl max-h-[80vh] w-full mx-16"
+            className="relative max-w-4xl max-h-[80vh] w-full mx-16 -translate-y-8"
             onClick={(e) => e.stopPropagation()}
           >
             <Image

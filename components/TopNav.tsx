@@ -50,7 +50,8 @@ export default function TopNav() {
             ))}
             <a
               href="/resume.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 bg-neutral-900 text-white font-mono text-xs uppercase tracking-widest px-3 py-1.5 hover:bg-neutral-700 transition-colors"
             >
               <FileDown size={12} />

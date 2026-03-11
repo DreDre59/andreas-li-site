@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio website for Andreas Li — mechatronics and robotics engineering professional. Built with Next.js (App Router), MDX, and Tailwind CSS.
 
+**Important:** Only the anchor sections on the home page matter (`/#experience`, `/#projects`, `/#contact`). The standalone pages `/experience` and `/projects` are not used — do not prioritize or update them.
+
 ## Design References
 
 - [shayaanazeem.com](https://www.shayaanazeem.com/) — highlighted keyword badges, card-based content, casual-confident tone

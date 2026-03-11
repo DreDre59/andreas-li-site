@@ -3,26 +3,15 @@ import experience from "@/data/experience";
 import { getAllProjects } from "@/lib/mdx";
 import ProjectsGallery from "@/components/ProjectsGallery";
 
-type BadgeVariant = "default" | "achievement" | "technical" | "company" | "skill" | "hardware";
-
-const badgeStyles: Record<BadgeVariant, string> = {
-  default: "bg-neutral-100 text-neutral-700",
-  achievement: "bg-amber-50 text-amber-800",
-  technical: "bg-sky-50 text-sky-800",
-  company: "bg-emerald-50 text-emerald-800",
-  skill: "bg-violet-50 text-violet-800",
-  hardware: "bg-rose-50 text-rose-800",
-};
-
 function Badge({
   children,
-  variant = "default",
+  color,
 }: {
   children: React.ReactNode;
-  variant?: BadgeVariant;
+  color?: string;
 }) {
   return (
-    <span className={`inline-block font-medium text-sm px-1.5 py-0.5 ${badgeStyles[variant]}`}>
+    <span className={`inline-block font-medium text-sm px-1.5 py-0.5 ${color ?? "bg-neutral-100 text-neutral-700"}`}>
       {children}
     </span>
   );
@@ -30,25 +19,16 @@ function Badge({
 
 const highlights = [
   <>
-    designed and built autonomous mobile robots for competitive robotics, ranking{" "}
-    <Badge variant="achievement">top 10% nationally</Badge>
+    interning at <Badge color="bg-rose-50 text-rose-800">Tesla as a vehicle design engineer </Badge>for passive safety systems
   </>,
   <>
-    developed embedded firmware for a{" "}
-    <Badge variant="technical">6-DOF robotic arm</Badge> with real-time sensor
-    fusion and PID control
+    assisted in <Badge color="bg-violet-50 text-violet-800">human-robot interaction research at SIRRL</Badge> in a study parted with the UW school of optometry
   </>,
   <>
-    interned at <Badge variant="company">Automation Corp</Badge> building
-    industrial control systems and PLC programming
+    implemeted <Badge color="bg-sky-50 text-sky-800">Martinrea&apos;s first AMR material delivery system</Badge>, transporting 4,000 lb/hour of materials
   </>,
   <>
-    built a <Badge variant="skill">computer vision pipeline</Badge> for object
-    detection and path planning using ROS2
-  </>,
-  <>
-    designed custom <Badge variant="hardware">PCBs</Badge> for motor drivers and
-    sensor interfaces across 4+ projects
+    built robots with my buddies and became the vex robotics competition<Badge color="bg-amber-50 text-amber-800">ontario provincial champions</Badge>, representing my province at world championships
   </>,
 ];
 
@@ -73,7 +53,7 @@ export default function Home() {
             >
               Li
             </h1>
-            <div className="flex flex-col gap-0.5 -mb-[1em]">
+            <div className="relative -top-[37px] flex flex-col gap-0.5 -mb-[1em]">
               <span className="font-mono text-xs uppercase tracking-widest text-neutral-400">
                 Mechatronics &amp;
               </span>
@@ -95,30 +75,25 @@ export default function Home() {
               <p className="font-display text-neutral-600 leading-relaxed text-base">
                 i build things that move, think, and interact with the real world.
                 studying{" "}
-                <Badge variant="default">mechatronics engineering</Badge> at the{" "}
-                <Badge variant="achievement">University of Waterloo</Badge>.
+                <Badge color="bg-emerald-50 text-emerald-800">mechatronics engineering</Badge> at the{" "}
+                <Badge color="bg-amber-50 text-amber-800">University of Waterloo</Badge>.
               </p>
               <p className="font-display text-neutral-500 leading-relaxed text-sm mt-4">
-                My work sits at the intersection of{" "}
-                <Badge variant="technical">mechanical design</Badge>,{" "}
-                <Badge variant="skill">embedded systems</Badge>, and{" "}
-                <Badge variant="hardware">robotics</Badge>. I like taking ideas from
-                concept to physical prototype — from CAD and circuit design through
-                firmware and integration testing.
-              </p>
-              <p className="font-display text-neutral-500 leading-relaxed text-sm mt-4">
-                Previously at{" "}
-                <Badge variant="company">Tesla</Badge>,{" "}
-                <Badge variant="company">UWaterloo SIRRL</Badge>, and{" "}
-                <Badge variant="company">Martinrea International</Badge>.
-                Always looking for the next challenge that blends software with the physical world.
+                i started in competitive robotics 7 years ago, building robots throughout
+                middle and high school, and eventually deciding to go "pro" and turn my hobby into a
+                career. my work sits at the intersection of{" "}
+                <Badge color="bg-sky-50 text-sky-800">mechanical design</Badge>,{" "}
+                <Badge color="bg-rose-50 text-rose-800">electronics</Badge>, and{" "}
+                <Badge color="bg-violet-50 text-violet-800">controls</Badge>. i like taking ideas from
+                concept to physical prototype, from CAD and circuit design through
+                testing and integration.
               </p>
             </div>
 
             {/* ── Highlights ── */}
             <div>
               <p className="font-mono text-xs uppercase tracking-widest text-neutral-400 mb-4">
-                Highlights
+                Cool stuff I&apos;ve done
               </p>
               <ul className="space-y-3">
                 {highlights.map((item, i) => (
@@ -146,15 +121,7 @@ export default function Home() {
             />
             <div className="mt-4 flex items-center gap-5">
               <a
-                href="https://github.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
-              >
-                GitHub
-              </a>
-              <a
-                href="https://linkedin.com/in/"
+                href="https://www.linkedin.com/in/andreasli/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
@@ -162,7 +129,7 @@ export default function Home() {
                 LinkedIn
               </a>
               <a
-                href="mailto:your@email.com"
+                href="mailto:andreas.li@uwaterloo.ca"
                 className="font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
           >
             Email
@@ -188,19 +155,18 @@ export default function Home() {
 
         <div>
           {experience.map((entry, i) => (
-            <div key={i} className="flex flex-col md:flex-row gap-8 items-center pb-14">
+            <div key={i} className="flex flex-col md:flex-row gap-8 items-stretch pb-14">
               {/* ── Image (left) ── */}
-              <div className="w-full md:w-2/5 shrink-0">
+              <div className="w-full md:w-1/2 shrink-0 relative overflow-hidden min-h-[200px]">
                 {entry.image ? (
                   <Image
                     src={`/photos/experience/${entry.image}`}
                     alt={`${entry.company} photo`}
-                    width={600}
-                    height={400}
-                    className="w-full h-64 object-cover"
+                    fill
+                    className="object-cover object-top"
                   />
                 ) : (
-                  <div className="w-full aspect-[3/2] bg-neutral-100 border border-neutral-200" />
+                  <div className="absolute inset-0 bg-neutral-100 border border-neutral-200" />
                 )}
               </div>
 
@@ -217,11 +183,20 @@ export default function Home() {
                     />
                   )}
                   <div>
-                    <h3 className="font-display text-xl font-medium text-neutral-900">
+                    <h3 className="font-display text-xl font-bold text-neutral-900">
                       {entry.role}
                     </h3>
-                    <p className="font-display text-sm text-neutral-500 font-medium">
-                      {entry.company}
+                    <p className="font-display text-sm font-bold">
+                      <a
+                        href={({ Tesla: "https://www.tesla.com/", "UWaterloo SIRRL": "https://uwaterloo.ca/social-intelligent-robotics-research-lab/", "Martinrea International": "https://www.martinrea.com/" } as Record<string, string>)[entry.company] || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-block px-1.5 py-0.5 font-medium text-sm hover:opacity-80 transition-opacity ${
+                          ({ Tesla: "bg-rose-50 text-rose-800", "UWaterloo SIRRL": "bg-violet-50 text-violet-800", "Martinrea International": "bg-sky-50 text-sky-800" } as Record<string, string>)[entry.company] || "bg-neutral-100 text-neutral-700"
+                        }`}
+                      >
+                        {entry.company}
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -229,7 +204,7 @@ export default function Home() {
                   {entry.start} — {entry.end}
                 </span>
                 {entry.description.split("\n\n").map((para, j) => (
-                  <p key={j} className="font-display text-sm text-neutral-500 mt-3 leading-relaxed">
+                  <p key={j} className="font-display text-sm text-neutral-500 mt-3 leading-relaxed font-medium">
                     {para}
                   </p>
                 ))}
@@ -237,7 +212,9 @@ export default function Home() {
                   {entry.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="font-mono text-xs text-neutral-500 bg-neutral-50 border border-neutral-200 px-2.5 py-1 rounded-sm"
+                      className={`font-mono text-xs px-2.5 py-1 rounded-sm border ${
+                        ({ Tesla: "bg-rose-50 text-rose-700 border-rose-200", "UWaterloo SIRRL": "bg-violet-50 text-violet-700 border-violet-200", "Martinrea International": "bg-sky-50 text-sky-700 border-sky-200" } as Record<string, string>)[entry.company] || "text-neutral-500 bg-neutral-50 border-neutral-200"
+                      }`}
                     >
                       {skill}
                     </span>
@@ -278,7 +255,7 @@ export default function Home() {
         </p>
         <div className="flex items-center gap-4">
           <a
-            href="https://linkedin.com/in/"
+            href="https://www.linkedin.com/in/andreasli/"
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-xs text-neutral-900 border-2 border-neutral-900 px-5 py-3 hover:bg-neutral-900 hover:text-white transition-all duration-200 tracking-widest uppercase"
@@ -286,7 +263,7 @@ export default function Home() {
             LinkedIn &rarr;
           </a>
           <a
-            href="mailto:your@email.com"
+            href="mailto:andreas.li@uwaterloo.ca"
             className="font-mono text-xs text-neutral-900 border-2 border-neutral-900 px-5 py-3 hover:bg-neutral-900 hover:text-white transition-all duration-200 tracking-widest uppercase"
           >
             Email &rarr;

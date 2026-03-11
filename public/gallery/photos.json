@@ -4,5 +4,23 @@
     "title": "Peak of Mount Tamalpais",
     "location": "Mill Valley, CA",
     "date": "Feb 7th, 2026"
+  },
+  {
+    "src": "/gallery/images/TopofSlackerHill.jpg",
+    "title": "The best view of San Francisco",
+    "location": "Slacker Hill, CA",
+    "date": "Jan 17th, 2026"
+  },
+  {
+    "src": "/gallery/images/RocketLaunchatSantaMonica.jpg",
+    "title": "Rocket launch at the Santa Monica Pier",
+    "location": "Santa Monica, CA",
+    "date": "Feb 14th, 2026"
+  },
+  {
+    "src": "/gallery/images/Palisades.JPG",
+    "title": "Ripping it at Palisades",
+    "location": "Olympic Valley, CA",
+    "date": "Jan 31st, 2026"
   }
 ]

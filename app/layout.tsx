@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   },
   description:
     "Personal portfolio of Andreas Li, a mechatronics and robotics engineering professional.",
+  icons: { icon: "/favicon.svg" },
   openGraph: {
     type: "website",
     locale: "en_US",

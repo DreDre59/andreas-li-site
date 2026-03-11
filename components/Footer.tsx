@@ -1,9 +1,8 @@
-import { Github, Linkedin, Mail, FileDown } from "lucide-react";
+import { Linkedin, Mail, FileDown } from "lucide-react";
 
 const socialLinks = [
-  { href: "https://github.com/", label: "GitHub", icon: Github },
-  { href: "https://linkedin.com/in/", label: "LinkedIn", icon: Linkedin },
-  { href: "mailto:your@email.com", label: "Email", icon: Mail },
+  { href: "https://www.linkedin.com/in/andreasli/", label: "LinkedIn", icon: Linkedin },
+  { href: "mailto:andreas.li@uwaterloo.ca", label: "Email", icon: Mail },
 ];
 
 export default function Footer() {
@@ -28,7 +27,8 @@ export default function Footer() {
           ))}
           <a
             href="/resume.pdf"
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
           >
             <FileDown size={13} />
