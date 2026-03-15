@@ -22,27 +22,27 @@ const companyUrl: Record<string, string> = {
 export default function ExperiencePage() {
   return (
     <div className="py-20 px-8 max-w-7xl mx-auto">
-      <div className="flex items-end justify-between mb-14">
+      <div className="flex items-end justify-between gap-4 mb-14">
         <h1 className="font-display font-extrabold uppercase text-neutral-900 tracking-tight text-5xl leading-none">
           Experience
         </h1>
-        <span className="font-mono text-xs uppercase tracking-widest text-neutral-300 pb-1">
-          {String(experience.length).padStart(2, "0")} roles
+        <span className="font-mono text-xs uppercase tracking-widest text-neutral-300 pb-1 shrink-0 flex flex-col items-start md:flex-row md:gap-1 leading-tight">
+          <span>{String(experience.length).padStart(2, "0")}</span>
+          <span>roles</span>
         </span>
       </div>
 
       <div>
         {experience.map((entry, i) => (
-          <div key={i} className="flex flex-col md:flex-row gap-8 items-stretch pb-14">
+          <div key={i} className="flex flex-col-reverse md:flex-row gap-8 items-start pb-14">
             {/* ── Image (left) ── */}
-            <div className="w-full md:w-1/2 shrink-0">
+            <div className="w-full md:w-1/2 shrink-0 h-[200px] md:h-[345px] relative overflow-hidden">
               {entry.image ? (
                 <Image
                   src={`/photos/experience/${entry.image}`}
                   alt={`${entry.company} photo`}
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover object-top"
                 />
               ) : (
                 <div className="w-full h-full bg-neutral-100 border border-neutral-200" />

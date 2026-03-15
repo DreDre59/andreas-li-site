@@ -19,8 +19,39 @@
   },
   {
     "src": "/gallery/images/Palisades.JPG",
-    "title": "Ripping it at Palisades",
+    "title": "Ripping it in Tahoe",
     "location": "Olympic Valley, CA",
     "date": "Jan 31st, 2026"
+  },
+  {
+    "src": "/gallery/images/Mission Peak.jpg",
+    "title": "MOO",
+    "location": "Mission Peak, CA",
+    "date": "Jan 10th, 2026"
+  },
+  {
+    "src": "/gallery/images/MountDiablo.jpeg",
+    "title": "Frolicking",
+    "location": "Mount Diablo, CA",
+    "date": "Mar 7th, 2026"
+  },
+  {
+    "src": "/gallery/images/HalfMoonBay.jpg",
+    "title": "Half Moon Bay",
+    "location": "Half Moon Bay, CA",
+    "date": "Jan 18th, 2026"
+  },
+  {
+    "src": "/gallery/images/Crab.jpg",
+    "title": "Crab",
+    "location": "Half Moon Bay, CA",
+    "date": "Jan 18th, 2026",
+    "objectPosition": "center 55%"
+  },
+  {
+    "src": "/gallery/images/OverlookingTheGoldenGate.jpg",
+    "title": "Top of the world with the boys",
+    "location": "Marin Headlands, CA",
+    "date": "Jan 17th, 2026"
   }
 ]

@@ -13,44 +13,41 @@ const experience: ExperienceEntry[] = [
   {
     company: "Tesla",
     role: "Vehicle Design Engineering Intern",
-    start: "May 2025",
-    end: "Aug 2025",
-    skills: ["CAD", "GD&T", "DFMEA", "Root Cause Analysis", "Tolerance Analysis"],
+    start: "Jan 2026",
+    end: "Present",
+    skills: ["Catia 3DX", "Python", "PID Control"],
     logo: "Tesla_Logo.png",
     image: "Tesla-Cybercab-Robovan.jpg",
-    description: `Contributed to vehicle design engineering on active programs, working closely with cross-functional teams across manufacturing, quality, and supply chain.
-
-Performed tolerance stack-up analyses and GD&T reviews for critical assemblies, identifying potential fit issues before prototype builds. Supported root cause investigations for field returns using structured problem-solving methods.
-
-Developed and maintained engineering documentation including DFMEAs and design verification plans, ensuring traceability across design iterations.`,
+    description: `Working on seatbelt technologies for Cybercab and future programs.
+    `,
   },
   {
-    company: "UWaterloo SIRRL",
+    company: "Social and Intelligent Robotics Research Lab",
     role: "Research Assistant",
-    start: "Jan 2025",
-    end: "Apr 2025",
-    skills: ["ROS2", "Python", "C++", "Computer Vision", "SLAM"],
+    start: "Sept 2025",
+    end: "Dec 2025",
+    skills: ["LLMs", "Prompt Engineering", "User Studies"],
     logo: "Sirrl_Logo.png",
     image: "Furhat_Robot.jpg",
-    description: `Conducted research in the Social and Intelligent Robotics Research Lab, focusing on mobile robot perception and human-robot interaction.
+    description: `Assisted in a study exploring LLM-driven human-robot interaction for optometry communication training. Using a Furhat Robot paired with LLMs to simulate realistic patient interactions for optometry students.
 
-Developed and tested perception pipelines using ROS2, integrating depth cameras and LiDAR for real-time obstacle detection and mapping. Contributed to SLAM algorithm benchmarking across indoor environments.
+Developed 8 distinct patient personas, iterating on prompt design to ensure consistent character alignment, prevent instruction drift, and avoid hallucinations.
 
-Assisted in designing experiments for user studies evaluating robot navigation behavior in shared human spaces.`,
+Conducted a validation study with participants, evaluating persona performance and character consistency across simulated patient interactions, and collecting qualitative feedback for refinements.`,
   },
   {
     company: "Martinrea International",
     role: "Mechatronics Engineering Intern",
-    start: "May 2024",
-    end: "Aug 2024",
-    skills: ["PLC Programming", "SolidWorks", "Embedded C", "Pneumatics", "HMI Design"],
+    start: "May 2025",
+    end: "Aug 2025",
+    skills: ["SolidWorks", "Raspberry Pi", "Finite Element Analysis", "Python"],
     logo: "Martinrea_Logo.png",
     image: "amr-materialtransport.jpg",
-    description: `Worked on automation and manufacturing systems at a Tier 1 automotive parts supplier, supporting production line upgrades and troubleshooting.
+    description: `Implemented Martinrea's first autonomous mobile robot (AMR) system in a metals plant. Designed 6 AMR-compatible material carts using SolidWorks, capable of transporting over 1,300 lbs of parts.
 
-Programmed and debugged PLCs for automated assembly stations, improving cycle time consistency. Designed pneumatic circuit modifications and created updated SolidWorks models for fixture improvements.
+Built an automated low-stock replenishment system using Raspberry Pi and MQTT, triggering AMR deliveries to production lines when material runs low. Developed a PostgreSQL telemetry database to track AMR missions and sensor data..
 
-Developed HMI screens for operator interfaces and wrote embedded firmware for sensor monitoring modules deployed on the production floor.`,
+Presented the autonomous vehicle systems to investors and guests, communicating design decisions and operational benefits to drive stakeholder confidence.`,
   },
 ];
 

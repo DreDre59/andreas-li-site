@@ -338,28 +338,32 @@ The owner already has a custom domain name purchased.
 - [x] Style individual project pages (`/projects/[slug]`) to match design system
 - [x] Remove standalone `/projects` listing page (nav links to `/#projects` section)
 
-### Phase 1.75: Experience Logo Update & Profile Photo — NEXT
-- [ ] Add logo files to `public/logos/` (tesla.png, sirrl.png, martinrea.png)
-- [ ] Add `logo` field to `data/experience.ts` entries
-- [ ] Replace square timeline dots with company logo images (48x48, rounded-sm, border, shadow)
-- [ ] Connecting vertical line between logos, stopping at last entry
-- [ ] Add profile photo as wide banner in hero section (`public/photos/profile.jpg`)
+### Phase 1.75: Experience Logo Update & Profile Photo — ✅ COMPLETE
+- [x] Add logo files to `public/logos/` (Tesla_Logo.png, Sirrl_Logo.png, Martinrea_Logo.png)
+- [x] Add `logo` field to `data/experience.ts` entries
+- [x] Replace square timeline dots with company logo images (48x48, rounded-sm, border, shadow)
+- [x] Add profile photo as wide banner in hero section (`public/photos/profile.jpeg`)
 
-### Phase 2: Core Content Pages
-- [ ] Populate About/Hero section with real content
-- [ ] Populate Experience section with real internship data
+### Phase 2: Core Content Pages — ✅ COMPLETE
+- [x] Populate About/Hero section with real content (intro, highlights, keyword badges)
+- [x] Populate Experience section with real internship data (Tesla, SIRRL, Martinrea)
+- [x] Add experience images (`public/photos/experience/`) with consistent fixed-height display (h-[345px] desktop, h-[200px] mobile)
+- [x] Experience layout: image left + text right on desktop, text first + image below on mobile (`flex-col-reverse md:flex-row`)
+- [x] Company name badges link to company websites
+- [x] Color-coded skill tags per company (rose/Tesla, violet/SIRRL, sky/Martinrea)
+- [x] Add gallery images and captions
 - [ ] Add real project MDX files with images
 - [ ] Validate project filtering and individual project pages
 
 ### Phase 3: Blog & Gallery
 - [ ] Populate blog with real posts
-- [ ] Add gallery images and captions
 - [ ] Test lightbox and masonry layouts
 
 ### Phase 4: Polish & Deploy
-- [ ] Responsive testing and fixes across breakpoints
+- [ ] Responsive testing and fixes across breakpoints (mobile experience layout done)
 - [ ] SEO: meta tags, Open Graph, sitemap
 - [ ] Performance audit (Lighthouse)
+- [ ] Image optimization (experience photos resized to 800px wide)
 - [ ] Dark/light mode (optional)
 - [ ] Final design pass: typography, spacing, color consistency
 - [ ] Configure deployment (Vercel or self-hosted — see Deployment Options)
@@ -369,11 +373,11 @@ The owner already has a custom domain name purchased.
 
 ## Content Checklist (For Andreas to Prepare)
 
-- [ ] Resume PDF
-- [ ] About section text (intro + highlights)
+- [x] Resume PDF
+- [x] About section text (intro + highlights)
 - [ ] For each project: title, description, tags, thumbnail, and write-up content with images
-- [ ] For each internship: company, role, dates, description, technologies
+- [x] For each internship: company, role, dates, description, technologies
 - [ ] Blog posts (can start with 1–2)
-- [ ] Gallery photos with optional captions
-- [ ] Social profile URLs (GitHub, LinkedIn, email)
-- [ ] Headshot or personal photo (optional, for About section)
+- [x] Gallery photos with optional captions
+- [x] Social profile URLs (GitHub, LinkedIn, email)
+- [x] Headshot or personal photo (profile.jpeg in hero section)

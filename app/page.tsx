@@ -22,13 +22,13 @@ const highlights = [
     interning at <Badge color="bg-rose-50 text-rose-800">Tesla as a vehicle design engineer </Badge>for passive safety systems
   </>,
   <>
-    assisted in <Badge color="bg-violet-50 text-violet-800">human-robot interaction research at SIRRL</Badge> in a study parted with the UW school of optometry
+    assisted in <Badge color="bg-violet-50 text-violet-800">human-robot interaction research at SIRRL</Badge> in a study partnered with the UWaterloo School of Optometry
   </>,
   <>
-    implemeted <Badge color="bg-sky-50 text-sky-800">Martinrea&apos;s first AMR material delivery system</Badge>, transporting 4,000 lb/hour of materials
+    implemeted <Badge color="bg-sky-50 text-sky-800">Martinrea&apos;s first autonomous mobile robot system</Badge> for material delivery, transporting 4,000 lb/hour of materials
   </>,
   <>
-    built robots with my buddies and became the vex robotics competition<Badge color="bg-amber-50 text-amber-800">ontario provincial champions</Badge>, representing my province at world championships
+    built robots with my buddies and won the vex robotics competition<Badge color="bg-amber-50 text-amber-800">ontario provincial championship</Badge>, representing my province at world championships in Dallas Texas
   </>,
 ];
 
@@ -72,7 +72,7 @@ export default function Home() {
               <p className="font-mono text-xs uppercase tracking-widest text-neutral-400 mb-4">
                 About
               </p>
-              <p className="font-display text-neutral-600 leading-relaxed text-base">
+              <p className="font-display text-neutral-500 leading-relaxed text-sm">
                 i build things that move, think, and interact with the real world.
                 studying{" "}
                 <Badge color="bg-emerald-50 text-emerald-800">mechatronics engineering</Badge> at the{" "}
@@ -84,9 +84,7 @@ export default function Home() {
                 career. my work sits at the intersection of{" "}
                 <Badge color="bg-sky-50 text-sky-800">mechanical design</Badge>,{" "}
                 <Badge color="bg-rose-50 text-rose-800">electronics</Badge>, and{" "}
-                <Badge color="bg-violet-50 text-violet-800">controls</Badge>. i like taking ideas from
-                concept to physical prototype, from CAD and circuit design through
-                testing and integration.
+                <Badge color="bg-violet-50 text-violet-800">controls</Badge>. 
               </p>
             </div>
 
@@ -144,20 +142,21 @@ export default function Home() {
 
       {/* ── Experience ── */}
       <section id="experience" className="py-20 px-8 max-w-7xl mx-auto scroll-mt-20">
-        <div className="flex items-end justify-between mb-14">
+        <div className="flex items-end justify-between gap-4 mb-14">
           <h2 className="font-display font-extrabold uppercase text-neutral-900 tracking-tight text-5xl leading-none">
             Experience
           </h2>
-          <span className="font-mono text-xs uppercase tracking-widest text-neutral-300 pb-1">
-            {String(experience.length).padStart(2, "0")} roles
+          <span className="font-mono text-xs uppercase tracking-widest text-neutral-300 pb-1 shrink-0 flex flex-col items-start md:flex-row md:gap-1 leading-tight">
+            <span>{String(experience.length).padStart(2, "0")}</span>
+            <span>roles</span>
           </span>
         </div>
 
         <div>
           {experience.map((entry, i) => (
-            <div key={i} className="flex flex-col md:flex-row gap-8 items-stretch pb-14">
-              {/* ── Image (left) ── */}
-              <div className="w-full md:w-1/2 shrink-0 relative overflow-hidden min-h-[200px]">
+            <div key={i} className="flex flex-col-reverse md:flex-row gap-8 items-start pb-14">
+              {/* ── Image (left on desktop, below on mobile) ── */}
+              <div className="w-full md:w-1/2 shrink-0 relative overflow-hidden h-[200px] md:h-[345px]">
                 {entry.image ? (
                   <Image
                     src={`/photos/experience/${entry.image}`}
@@ -188,11 +187,11 @@ export default function Home() {
                     </h3>
                     <p className="font-display text-sm font-bold">
                       <a
-                        href={({ Tesla: "https://www.tesla.com/", "UWaterloo SIRRL": "https://uwaterloo.ca/social-intelligent-robotics-research-lab/", "Martinrea International": "https://www.martinrea.com/" } as Record<string, string>)[entry.company] || "#"}
+                        href={({ Tesla: "https://www.tesla.com/", "Social and Intelligent Robotics Research Lab": "https://uwaterloo.ca/social-intelligent-robotics-research-lab/", "Martinrea International": "https://www.martinrea.com/" } as Record<string, string>)[entry.company] || "#"}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`inline-block px-1.5 py-0.5 font-medium text-sm hover:opacity-80 transition-opacity ${
-                          ({ Tesla: "bg-rose-50 text-rose-800", "UWaterloo SIRRL": "bg-violet-50 text-violet-800", "Martinrea International": "bg-sky-50 text-sky-800" } as Record<string, string>)[entry.company] || "bg-neutral-100 text-neutral-700"
+                          ({ Tesla: "bg-rose-50 text-rose-800", "Social and Intelligent Robotics Research Lab": "bg-violet-50 text-violet-800", "Martinrea International": "bg-sky-50 text-sky-800" } as Record<string, string>)[entry.company] || "bg-neutral-100 text-neutral-700"
                         }`}
                       >
                         {entry.company}
@@ -213,7 +212,7 @@ export default function Home() {
                     <span
                       key={skill}
                       className={`font-mono text-xs px-2.5 py-1 rounded-sm border ${
-                        ({ Tesla: "bg-rose-50 text-rose-700 border-rose-200", "UWaterloo SIRRL": "bg-violet-50 text-violet-700 border-violet-200", "Martinrea International": "bg-sky-50 text-sky-700 border-sky-200" } as Record<string, string>)[entry.company] || "text-neutral-500 bg-neutral-50 border-neutral-200"
+                        ({ Tesla: "bg-rose-50 text-rose-700 border-rose-200", "Social and Intelligent Robotics Research Lab": "bg-violet-50 text-violet-700 border-violet-200", "Martinrea International": "bg-sky-50 text-sky-700 border-sky-200" } as Record<string, string>)[entry.company] || "text-neutral-500 bg-neutral-50 border-neutral-200"
                       }`}
                     >
                       {skill}
