@@ -62,6 +62,7 @@ Neutral-only base palette with soft colored keyword badges:
 | Icons        | **Lucide React**       | Clean, consistent icon set                               |
 | Display Font | **Bricolage Grotesque** | Bold, modern, magazine-like grotesque sans-serif        |
 | Mono Font    | **DM Mono**            | Clean monospace for metadata and technical elements      |
+| Animations   | **Motion** (motion.dev)| Subtle entrance animations — fade-in, slide-up, scroll-triggered badges |
 
 ---
 
@@ -276,6 +277,18 @@ public/
 - Thin horizontal lines (border-t border-neutral-100) between all major sections
 - Contained within max-w-7xl mx-auto px-8
 
+### Animations
+
+Subtle, clean entrance animations throughout. All use `easeOut` curves — no bouncing or spring physics.
+
+- **Hero title:** "Andreas" and "Li" fade in + slide up on page load with a stagger
+- **Hero content:** About text and highlights fade in after the title lands
+- **Keyword badges:** Start as plain inline text (same color as surrounding body text). When scrolled into view, the colored background and text color fade in (0.75s). Each badge independently triggers via `useInView`.
+- **Profile photo:** Fades in alongside the hero content
+- **Section headings:** Fade up 24px when scrolled into view (`whileInView`)
+- **Gallery photos:** Full color by default (no grayscale), subtle scale-up on hover
+- **Project tag filters:** Currently disabled (commented out)
+
 ### Responsive Design
 - Mobile-first approach
 - All sections must work well on phone, tablet, and desktop
@@ -354,6 +367,16 @@ The owner already has a custom domain name purchased.
 - [x] Add gallery images and captions
 - [ ] Add real project MDX files with images
 - [ ] Validate project filtering and individual project pages
+
+### Phase 2.75: Animations — ✅ COMPLETE
+- [x] Install motion.dev library
+- [x] Hero title fade-in + slide-up animation with stagger (AnimatedHeroTitle)
+- [x] Hero content fade-in (AnimatedHeroContent)
+- [x] Keyword badges start as plain text, colored backgrounds fade in on scroll (AnimatedBadge + useInView)
+- [x] Profile photo fades in with hero content (FadeIn wrapper)
+- [x] Section headings fade up on scroll (FadeIn wrapper)
+- [x] Gallery photos changed to full color (removed grayscale filter)
+- [x] Project tag filters commented out
 
 ### Phase 3: Blog & Gallery
 - [ ] Populate blog with real posts

@@ -49,7 +49,7 @@ export default function GalleryGrid({ photos }: Props) {
               src={photo.src}
               alt={photo.title ?? photo.caption ?? `Gallery photo ${i + 1}`}
               fill
-              className="object-cover grayscale transition-all duration-500 ease-out group-hover:grayscale-0 group-hover:scale-105"
+              className="object-cover transition-all duration-500 ease-out group-hover:scale-105"
               style={photo.objectPosition ? { objectPosition: photo.objectPosition } : undefined}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">

@@ -88,6 +88,19 @@ Used in the About/hero highlights section. Soft colored backgrounds with matchin
 - **Hover reveals** on project gallery cards — dark overlay with title, description, and tags
 - **Thin dividers** (border-t border-neutral-100) between major sections
 
+### Animations (motion.dev)
+
+Subtle, clean entrance animations using the `motion` library. All animations use `easeOut` curves, no bouncing or spring physics — just opacity + translateY.
+
+- **Hero title** (`AnimatedHeroTitle`): "Andreas" and "Li" fade in and slide up (40px, 0.7s) with a 0.15s stagger. Subtitle fades in after 0.4s delay.
+- **Hero content** (`AnimatedHeroContent`): About text and highlights fade in together (0.6s, 0.5s delay after title).
+- **Keyword badges** (`AnimatedBadge`): Start as plain text (neutral-500, transparent background). When each badge scrolls into view (`useInView`), its colored background and text fade in (0.75s). Badges within a group have small stagger delays (0.1–0.4s).
+- **Profile photo**: Fades in with the hero content (0.5s delay) via `FadeIn` wrapper.
+- **Section headings**: "Experience", "Projects", "Let's Connect" each fade up 24px on scroll via `FadeIn` wrapper with `whileInView`.
+- **`FadeIn` component**: Reusable client component wrapper — configurable `delay`, `y` offset, `duration`, and `once` (default true). Uses `whileInView` with `-50px` viewport margin.
+- **Project tag filters**: Currently commented out (disabled).
+- **Gallery photos**: Full color (no grayscale filter), scale-up on hover.
+
 ## Tech Stack
 
 - **Next.js 15 (App Router)** with TypeScript
@@ -97,6 +110,7 @@ Used in the About/hero highlights section. Soft colored backgrounds with matchin
 - **next/image** for all images
 - **Bricolage Grotesque** (Google Fonts) for display/body
 - **DM Mono** (Google Fonts) for metadata/nav
+- **Motion** (motion.dev) for animations
 
 ## Build Status
 
@@ -139,9 +153,13 @@ All design system updates have been applied. The site uses Bricolage Grotesque +
 | `components/TopNav.tsx` | Fixed top nav — name left, anchor links (experience/projects) + page links (blog/gallery) + resume button right, mobile hamburger |
 | `components/Footer.tsx` | Social icons + resume download link |
 | `components/ThemeToggle.tsx` | Dark/light toggle with `localStorage` + system preference fallback |
-| `components/ProjectsGallery.tsx` | Client component — masonry grid (CSS columns-3), hover reveal overlay, tag filters |
+| `components/ProjectsGallery.tsx` | Client component — masonry grid (CSS columns-3), hover reveal overlay, tag filters (currently commented out) |
 | `components/ProjectsGrid.tsx` | Legacy client component (replaced by ProjectsGallery on home page) |
 | `components/GalleryGrid.tsx` | Client component — masonry grid + lightbox with keyboard nav |
+| `components/AnimatedHeroTitle.tsx` | Client component — hero name fade-in + slide-up animation with stagger |
+| `components/AnimatedHeroContent.tsx` | Client component — about/highlights with animated keyword badges |
+| `components/AnimatedBadge.tsx` | Client component — badge that starts as plain text, fades to colored on scroll (`useInView`) |
+| `components/FadeIn.tsx` | Reusable client component — `whileInView` fade-up wrapper with configurable delay/duration/offset |
 | `components/Sidebar.tsx` | Legacy sidebar (replaced by TopNav) |
 | `components/mdx/ProjectImage.tsx` | MDX component: optimized image with optional caption |
 | `components/mdx/VideoEmbed.tsx` | MDX component: YouTube/Vimeo embed |

@@ -26,7 +26,7 @@ export default function ProjectsGallery({ projects }: Props) {
 
   return (
     <div>
-      {/* Filters */}
+      {/* Filters — commented out for now
       {allTags.length > 0 && (
         <div className="flex items-center gap-3 mb-12 flex-wrap">
           {filters.map((f) => (
@@ -44,6 +44,7 @@ export default function ProjectsGallery({ projects }: Props) {
           ))}
         </div>
       )}
+      */}
 
       {/* Masonry grid */}
       {filtered.length === 0 ? (

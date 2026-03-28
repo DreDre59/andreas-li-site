@@ -2,35 +2,10 @@ import Image from "next/image";
 import experience from "@/data/experience";
 import { getAllProjects } from "@/lib/mdx";
 import ProjectsGallery from "@/components/ProjectsGallery";
+import AnimatedHeroTitle from "@/components/AnimatedHeroTitle";
+import AnimatedHeroContent from "@/components/AnimatedHeroContent";
+import FadeIn from "@/components/FadeIn";
 
-function Badge({
-  children,
-  color,
-}: {
-  children: React.ReactNode;
-  color?: string;
-}) {
-  return (
-    <span className={`inline-block font-medium text-sm px-1.5 py-0.5 ${color ?? "bg-neutral-100 text-neutral-700"}`}>
-      {children}
-    </span>
-  );
-}
-
-const highlights = [
-  <>
-    interning at <Badge color="bg-rose-50 text-rose-800">Tesla as a vehicle design engineer </Badge>for passive safety systems
-  </>,
-  <>
-    assisted in <Badge color="bg-violet-50 text-violet-800">human-robot interaction research at SIRRL</Badge> in a study partnered with the UWaterloo School of Optometry
-  </>,
-  <>
-    implemeted <Badge color="bg-sky-50 text-sky-800">Martinrea&apos;s first autonomous mobile robot system</Badge> for material delivery, transporting 4,000 lb/hour of materials
-  </>,
-  <>
-    built robots with my buddies and won the vex robotics competition<Badge color="bg-amber-50 text-amber-800">ontario provincial championship</Badge>, representing my province at world championships in Dallas Texas
-  </>,
-];
 
 export default function Home() {
   const projects = getAllProjects();
@@ -39,76 +14,14 @@ export default function Home() {
     <div>
       {/* ── Hero ── */}
       <section className="pt-32 pb-16 px-8 max-w-7xl mx-auto">
-        <div className="pt-8">
-          <h1
-            className="font-display font-extrabold uppercase text-neutral-900 leading-none"
-            style={{ fontSize: "clamp(4rem, 11vw, 9rem)", letterSpacing: "-0.03em" }}
-          >
-            Andreas
-          </h1>
-          <div className="flex items-end gap-2">
-            <h1
-              className="font-display font-extrabold uppercase text-neutral-900 leading-none"
-              style={{ fontSize: "clamp(4rem, 11vw, 9rem)", letterSpacing: "-0.03em" }}
-            >
-              Li
-            </h1>
-            <div className="relative -top-[37px] flex flex-col gap-0.5 -mb-[1em]">
-              <span className="font-mono text-xs uppercase tracking-widest text-neutral-400">
-                Mechatronics &amp;
-              </span>
-              <span className="font-mono text-xs uppercase tracking-widest text-neutral-400">
-                Robotics Engineer
-              </span>
-            </div>
-          </div>
-        </div>
+        <AnimatedHeroTitle />
 
         <div className="mt-12 flex flex-col md:flex-row gap-12 items-center">
           {/* ── About & Highlights (left) ── */}
-          <div className="w-full md:w-1/2 space-y-10">
-            {/* ── About Me ── */}
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-neutral-400 mb-4">
-                About
-              </p>
-              <p className="font-display text-neutral-500 leading-relaxed text-sm">
-                i build things that move, think, and interact with the real world.
-                studying{" "}
-                <Badge color="bg-emerald-50 text-emerald-800">mechatronics engineering</Badge> at the{" "}
-                <Badge color="bg-amber-50 text-amber-800">University of Waterloo</Badge>.
-              </p>
-              <p className="font-display text-neutral-500 leading-relaxed text-sm mt-4">
-                i started in competitive robotics 7 years ago, building robots throughout
-                middle and high school, and eventually deciding to go "pro" and turn my hobby into a
-                career. my work sits at the intersection of{" "}
-                <Badge color="bg-sky-50 text-sky-800">mechanical design</Badge>,{" "}
-                <Badge color="bg-rose-50 text-rose-800">electronics</Badge>, and{" "}
-                <Badge color="bg-violet-50 text-violet-800">controls</Badge>. 
-              </p>
-            </div>
-
-            {/* ── Highlights ── */}
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-neutral-400 mb-4">
-                Cool stuff I&apos;ve done
-              </p>
-              <ul className="space-y-3">
-                {highlights.map((item, i) => (
-                  <li
-                    key={i}
-                    className="font-display text-sm text-neutral-500 leading-relaxed flex gap-3"
-                  >
-                    <span className="text-neutral-300 shrink-0 mt-0.5 select-none">—</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <AnimatedHeroContent />
 
           {/* ── Profile Banner (right) ── */}
-          <div className="w-full md:w-1/2 shrink-0">
+          <FadeIn className="w-full md:w-1/2 shrink-0" delay={0.5} duration={0.6}>
             <Image
               src="/photos/profile.jpeg"
               alt="Profile banner"
@@ -129,11 +42,11 @@ export default function Home() {
               <a
                 href="mailto:andreas.li@uwaterloo.ca"
                 className="font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-neutral-900 transition-colors"
-          >
-            Email
-          </a>
+              >
+                Email
+              </a>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -142,15 +55,17 @@ export default function Home() {
 
       {/* ── Experience ── */}
       <section id="experience" className="py-20 px-8 max-w-7xl mx-auto scroll-mt-20">
-        <div className="flex items-end justify-between gap-4 mb-14">
-          <h2 className="font-display font-extrabold uppercase text-neutral-900 tracking-tight text-5xl leading-none">
-            Experience
-          </h2>
-          <span className="font-mono text-xs uppercase tracking-widest text-neutral-300 pb-1 shrink-0 flex flex-col items-start md:flex-row md:gap-1 leading-tight">
-            <span>{String(experience.length).padStart(2, "0")}</span>
-            <span>roles</span>
-          </span>
-        </div>
+        <FadeIn>
+          <div className="flex items-end justify-between gap-4 mb-14">
+            <h2 className="font-display font-extrabold uppercase text-neutral-900 tracking-tight text-5xl leading-none">
+              Experience
+            </h2>
+            <span className="font-mono text-xs uppercase tracking-widest text-neutral-300 pb-1 shrink-0 flex flex-col items-start md:flex-row md:gap-1 leading-tight">
+              <span>{String(experience.length).padStart(2, "0")}</span>
+              <span>roles</span>
+            </span>
+          </div>
+        </FadeIn>
 
         <div>
           {experience.map((entry, i) => (
@@ -230,14 +145,16 @@ export default function Home() {
 
       {/* ── Projects ── */}
       <section id="projects" className="py-20 px-8 max-w-7xl mx-auto scroll-mt-20">
-        <div className="flex items-end justify-between mb-6">
-          <h2 className="font-display font-extrabold uppercase text-neutral-900 tracking-tight text-5xl leading-none">
-            Projects
-          </h2>
-          <span className="font-mono text-xs uppercase tracking-widest text-neutral-300 pb-1">
-            {String(projects.length).padStart(2, "0")} projects
-          </span>
-        </div>
+        <FadeIn>
+          <div className="flex items-end justify-between mb-6">
+            <h2 className="font-display font-extrabold uppercase text-neutral-900 tracking-tight text-5xl leading-none">
+              Projects
+            </h2>
+            <span className="font-mono text-xs uppercase tracking-widest text-neutral-300 pb-1">
+              {String(projects.length).padStart(2, "0")} projects
+            </span>
+          </div>
+        </FadeIn>
         <ProjectsGallery projects={projects} />
       </section>
 
@@ -246,12 +163,14 @@ export default function Home() {
 
       {/* ── Contact ── */}
       <section id="contact" className="py-20 px-8 max-w-7xl mx-auto scroll-mt-20">
-        <h2 className="font-display font-extrabold uppercase text-neutral-900 tracking-tight text-5xl leading-none mb-4">
-          Let&apos;s Connect
-        </h2>
-        <p className="font-display text-neutral-400 text-sm max-w-md leading-relaxed mb-8">
-          Interested in collaborating, have a question, or just want to say hello?
-        </p>
+        <FadeIn>
+          <h2 className="font-display font-extrabold uppercase text-neutral-900 tracking-tight text-5xl leading-none mb-4">
+            Let&apos;s Connect
+          </h2>
+          <p className="font-display text-neutral-400 text-sm max-w-md leading-relaxed mb-8">
+            Interested in collaborating, have a question, or just want to say hello?
+          </p>
+        </FadeIn>
         <div className="flex items-center gap-4">
           <a
             href="https://www.linkedin.com/in/andreasli/"
