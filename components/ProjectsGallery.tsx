@@ -7,8 +7,8 @@ import type { ProjectMeta } from "@/lib/mdx";
 
 const bgColors = ["#eae8e5", "#e0ddd8", "#d6d3ce", "#ece9e5", "#dfdcd7", "#d9d6d1"];
 
-// Alternate between portrait and landscape for visual variety
-const aspects = ["aspect-[4/3]", "aspect-[3/4]", "aspect-[4/3]", "aspect-[3/4]", "aspect-[4/3]", "aspect-[4/3]"];
+// Uniform aspect ratio for all project cards
+const CARD_ASPECT = "aspect-[4/3]";
 
 interface Props {
   projects: ProjectMeta[];
@@ -58,7 +58,7 @@ export default function ProjectsGallery({ projects }: Props) {
               className="group cursor-pointer break-inside-avoid mb-6 block"
             >
               <div
-                className={`w-full ${aspects[i % aspects.length]} overflow-hidden relative`}
+                className={`w-full ${CARD_ASPECT} overflow-hidden relative`}
                 style={{ backgroundColor: bgColors[i % bgColors.length] }}
               >
                 {/* Thumbnail or placeholder */}

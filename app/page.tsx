@@ -71,7 +71,7 @@ export default function Home() {
           {experience.map((entry, i) => (
             <div key={i} className="flex flex-col-reverse md:flex-row gap-8 items-start pb-14">
               {/* ── Image (left on desktop, below on mobile) ── */}
-              <div className="w-full md:w-1/2 shrink-0 relative overflow-hidden h-[200px] md:h-[345px]">
+              <FadeIn delay={0.1} className="w-full md:w-1/2 shrink-0 relative overflow-hidden h-[200px] md:h-[345px]">
                 {entry.image ? (
                   <Image
                     src={`/photos/experience/${entry.image}`}
@@ -82,10 +82,10 @@ export default function Home() {
                 ) : (
                   <div className="absolute inset-0 bg-neutral-100 border border-neutral-200" />
                 )}
-              </div>
+              </FadeIn>
 
               {/* ── Text (right) ── */}
-              <div className="w-full md:w-3/5">
+              <FadeIn delay={0.2} className="w-full md:w-3/5">
                 <div className="flex items-center gap-3 mb-2">
                   {entry.logo && (
                     <Image
@@ -134,7 +134,7 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </FadeIn>
             </div>
           ))}
         </div>

@@ -12,13 +12,16 @@ export interface ExperienceEntry {
 const experience: ExperienceEntry[] = [
   {
     company: "Tesla",
-    role: "Vehicle Design Engineering Intern",
+    role: "Vehicle Design Intern - Seatbelts",
     start: "Jan 2026",
     end: "Present",
     skills: ["Catia 3DX", "Python", "PID Control"],
     logo: "Tesla_Logo.png",
     image: "Tesla-Cybercab-Robovan.jpg",
-    description: `Working on seatbelt technologies for Cybercab and future programs.
+    description: `Supporting the development of new seatbelt technologies for use in the Cybercab and future programs.
+
+Developed a lifecycle test machine in Catia 3DX to test a seatbelt component over 75,000+ cycles, ensuring DFA and maintainability.
+Selected and integrated a BLDC motor and controller for lifecycle test hardware meeting calculated load requirements.
     `,
   },
   {

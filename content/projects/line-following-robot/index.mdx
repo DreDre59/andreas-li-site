@@ -21,11 +21,7 @@ The brain of the robot is an **STM32F103** microcontroller, chosen for its abund
 
 Motors are driven by a dual H-bridge (L298N), though I'd use a DRV8833 or similar FET-based driver next time to reduce the voltage drop.
 
-<ProjectImage
-  src="/content/projects/line-following-robot/thumbnail.jpg"
-  alt="Assembled line-following robot"
-  caption="The finished robot on the competition track."
-/>
+<ProjectImage src="/content/projects/line-following-robot/thumbnail.jpg" alt="Assembled line-following robot" caption="The finished robot on the competition track." />
 
 ## Control Algorithm
 
@@ -50,6 +46,6 @@ The robot successfully completed the track in **23.4 seconds**, placing 2nd in t
 
 ## What I'd Do Differently
 
-- Use a more capable MCU with floating-point hardware (STM32F4 family)
-- Design the sensor array as a separate daughter board for easier recalibration
-- Add encoders for closed-loop speed control rather than open-loop PWM duty cycle
+* Use a more capable MCU with floating-point hardware (STM32F4 family)
+* Design the sensor array as a separate daughter board for easier recalibration
+* Add encoders for closed-loop speed control rather than open-loop PWM duty cycle

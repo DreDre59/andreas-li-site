@@ -10,6 +10,7 @@ const withMDX = createMDX({
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  transpilePackages: ["@mdxeditor/editor"],
 };
 
 export default withMDX(nextConfig);

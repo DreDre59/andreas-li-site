@@ -97,6 +97,7 @@ Subtle, clean entrance animations using the `motion` library. All animations use
 - **Keyword badges** (`AnimatedBadge`): Start as plain text (neutral-500, transparent background). When each badge scrolls into view (`useInView`), its colored background and text fade in (0.75s). Badges within a group have small stagger delays (0.1–0.4s).
 - **Profile photo**: Fades in with the hero content (0.5s delay) via `FadeIn` wrapper.
 - **Section headings**: "Experience", "Projects", "Let's Connect" each fade up 24px on scroll via `FadeIn` wrapper with `whileInView`.
+- **Experience entries**: Each entry's image (0.1s delay) and text block (0.2s delay) fade in and slide up on scroll via `FadeIn` wrappers.
 - **`FadeIn` component**: Reusable client component wrapper — configurable `delay`, `y` offset, `duration`, and `once` (default true). Uses `whileInView` with `-50px` viewport margin.
 - **Project tag filters**: Currently commented out (disabled).
 - **Gallery photos**: Full color (no grayscale filter), scale-up on hover.
@@ -111,6 +112,7 @@ Subtle, clean entrance animations using the `motion` library. All animations use
 - **Bricolage Grotesque** (Google Fonts) for display/body
 - **DM Mono** (Google Fonts) for metadata/nav
 - **Motion** (motion.dev) for animations
+- **@mdxeditor/editor** for rich-text MDX editing (dev-only editor at `/editor`)
 
 ## Build Status
 
@@ -125,15 +127,17 @@ The project has been fully scaffolded and builds successfully (`npm run build` p
 
 All design system updates have been applied. The site uses Bricolage Grotesque + DM Mono fonts, a fixed top nav, neutral color palette, and sharp-corner component patterns throughout.
 
-**Phase 1.75: Experience Logo Update — PENDING**
+**Phase 3: MDX Editor, Project Content, and Styling — COMPLETE**
 
-- [ ] Add logo files to `public/logos/` (tesla.png, sirrl.png, martinrea.png)
-- [ ] Add a `logo` field to each entry in `data/experience.ts` (filename string, e.g., "tesla.png")
-- [ ] Update the experience timeline component to replace square dots with company logo images
-- [ ] Logo rendering: 48x48, rounded-sm, border border-neutral-200, shadow-sm, using `next/image`
-- [ ] Thin vertical line (w-px bg-neutral-200) connects logos; line stops at the last entry
-- [ ] Update both the home page experience section and the standalone `/experience` page
-- [ ] Add profile photo to hero section as wide banner (`public/photos/profile.jpg`, full-width, h-72, object-cover object-top)
+- [x] Installed `@mdxeditor/editor` with rich-text editing at `/editor`
+- [x] API routes for listing/reading/saving MDX files (`/api/mdx`)
+- [x] JSX plugin configured for custom components (`Callout`, `ProjectImage`, `VideoEmbed`)
+- [x] Added rear-wheel-hub project with images and content
+- [x] Project page styling: Bricolage Grotesque font, matching text size/color, heading spacing
+- [x] Uniform project card sizing in gallery (aspect-[4/3])
+- [x] Global prose list styles (bullets/numbers visible)
+- [x] Experience section scroll animations (image + text fade-in)
+- [x] Project images served from `public/content/projects/` for static access
 
 ### What's been built
 
@@ -165,11 +169,16 @@ All design system updates have been applied. The site uses Bricolage Grotesque +
 | `components/mdx/VideoEmbed.tsx` | MDX component: YouTube/Vimeo embed |
 | `components/mdx/Callout.tsx` | MDX component: callout box |
 | `lib/mdx.ts` | Server utilities: `getAllProjects()`, `getAllBlogPosts()`, slug discovery |
-| `data/experience.ts` | Experience entries — **needs logo field added** |
+| `data/experience.ts` | Experience entries with company, role, dates, skills, logo, image, description |
 | `content/projects/line-following-robot/` | Sample project MDX |
+| `content/projects/rear-wheel-hub/` | Solar Car Rear Wheel Hub project MDX with images |
 | `content/blog/first-pcb-lessons/` | Sample blog post MDX |
 | `public/gallery/photos.json` | Empty gallery manifest |
-| `public/logos/` | **TO BE ADDED** — tesla.png, sirrl.png, martinrea.png |
+| `public/logos/` | Company logos: tesla.png, sirrl.png, martinrea.png |
+| `public/content/projects/` | Project images served statically (copied from `content/`) |
+| `app/editor/page.tsx` | Dev-only MDX editor page — file picker sidebar, save with Ctrl+S |
+| `app/api/mdx/` | API routes for listing, reading, and saving MDX files |
+| `components/editor/` | MDX editor components (InitializedMDXEditor, ForwardRefEditor) |
 
 ---
 
@@ -254,6 +263,7 @@ npm run build      # Generates static output when output: 'export' is set in nex
 | `/blog` | Chronological post list |
 | `/blog/[slug]` | MDX blog post |
 | `/gallery` | Masonry/grid photo gallery with lightbox |
+| `/editor` | Dev-only rich-text MDX editor (not for production) |
 
 ### Content Layer
 

@@ -72,7 +72,7 @@ export default async function ProjectPage({ params }: Props) {
         <span className="font-mono text-xs text-neutral-400 tracking-widest uppercase">
           {frontmatter.date as string} — {rt}
         </span>
-        <h1 className="font-display font-extrabold uppercase tracking-tight text-4xl text-neutral-900 leading-none mt-3 mb-4">
+        <h1 className="font-display font-extrabold uppercase tracking-tight text-5xl text-neutral-900 leading-none mt-6 mb-6">
           {frontmatter.title as string}
         </h1>
         <p className="font-display text-sm text-neutral-500 leading-relaxed mb-6">
@@ -92,7 +92,7 @@ export default async function ProjectPage({ params }: Props) {
 
       <div className="border-t border-neutral-100 mb-12" />
 
-      <div className="prose prose-neutral max-w-none prose-headings:font-display prose-headings:font-extrabold prose-headings:uppercase prose-headings:tracking-tight prose-h2:text-xl prose-h3:text-lg prose-p:font-display prose-p:text-sm prose-p:text-neutral-500 prose-p:leading-relaxed prose-li:font-display prose-li:text-sm prose-li:text-neutral-500 prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-2 prose-strong:text-neutral-900 prose-code:font-mono prose-code:text-xs prose-img:rounded-none">
+      <div className="prose prose-neutral max-w-none font-display text-sm text-neutral-500 leading-relaxed prose-headings:font-display prose-headings:font-extrabold prose-headings:uppercase prose-headings:tracking-tight prose-headings:text-neutral-900 prose-h2:text-xl prose-h2:mt-24 prose-h2:mb-4 prose-h3:text-lg prose-h3:mt-20 prose-h3:mb-3 prose-a:text-neutral-900 prose-a:underline prose-a:underline-offset-2 prose-strong:text-neutral-900 prose-code:font-mono prose-code:text-xs prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-img:rounded-none">
         {content}
       </div>
     </article>
