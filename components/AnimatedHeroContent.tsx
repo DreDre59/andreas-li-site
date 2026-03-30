@@ -43,7 +43,7 @@ export default function AnimatedHeroContent() {
           <li className="font-display text-sm text-neutral-500 leading-relaxed flex gap-3">
             <span className="text-neutral-300 shrink-0 mt-0.5 select-none">—</span>
             <span>
-              interning at <AB color="bg-rose-50 text-rose-800" delay={0.1}>Tesla as a vehicle design engineer </AB>for passive safety systems
+              interning at <AB color="bg-rose-50 text-rose-800" delay={0.1}>Tesla as a vehicle design engineer </AB>for passive safety systems, working on seatbelt technology to keep people safe
             </span>
           </li>
           <li className="font-display text-sm text-neutral-500 leading-relaxed flex gap-3">
@@ -61,7 +61,7 @@ export default function AnimatedHeroContent() {
           <li className="font-display text-sm text-neutral-500 leading-relaxed flex gap-3">
             <span className="text-neutral-300 shrink-0 mt-0.5 select-none">—</span>
             <span>
-              built robots with my buddies and won the vex robotics competition <AB color="bg-amber-50 text-amber-800" delay={0.1}>ontario provincial championship</AB>, representing my province at world championships in Dallas Texas
+              built robots with my buddies and won the <AB color="bg-amber-50 text-amber-800" delay={0.1}>vex robotics competition</AB> ontario provincial championship, representing my province at world championships in Dallas Texas
             </span>
           </li>
         </ul>

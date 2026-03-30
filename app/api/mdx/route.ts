@@ -4,6 +4,13 @@ import path from 'path'
 
 const contentDir = path.join(process.cwd(), 'content')
 
+function prodGuard() {
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json({ error: 'Not available' }, { status: 404 })
+  }
+  return null
+}
+
 function getMDXFiles(type: 'projects' | 'blog') {
   const dir = path.join(contentDir, type)
   if (!fs.existsSync(dir)) return []
@@ -14,12 +21,16 @@ function getMDXFiles(type: 'projects' | 'blog') {
 }
 
 export async function GET() {
+  const blocked = prodGuard()
+  if (blocked) return blocked
   const projects = getMDXFiles('projects')
   const blogs = getMDXFiles('blog')
   return NextResponse.json([...projects, ...blogs])
 }
 
 export async function POST(request: NextRequest) {
+  const blocked = prodGuard()
+  if (blocked) return blocked
   const { type, slug, content } = await request.json()
 
   if (!type || !slug || content === undefined) {

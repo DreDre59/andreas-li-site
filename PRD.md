@@ -57,7 +57,7 @@ Neutral-only base palette with soft colored keyword badges:
 | Framework    | **Next.js (App Router)** | SSG/SSR flexibility, great DX, file-based routing       |
 | Content      | **MDX**                | Write project pages and blog posts in markdown with embedded React components |
 | Styling      | **Tailwind CSS**       | Rapid, consistent styling with utility classes           |
-| Deployment   | **Vercel** or **Self-hosted (static export)** | Vercel for zero-config; self-hosted if preferred (see Deployment section) |
+| Deployment   | **Vercel** | Zero-config deploys, automatic SSL, CDN, and image optimization |
 | Images       | **next/image**         | Automatic optimization, lazy loading                     |
 | Icons        | **Lucide React**       | Clean, consistent icon set                               |
 | Display Font | **Bricolage Grotesque** | Bold, modern, magazine-like grotesque sans-serif        |
@@ -310,23 +310,15 @@ Subtle, clean entrance animations throughout. All use `easeOut` curves — no bo
 
 ---
 
-## Deployment Options
+## Deployment
 
-The owner already has a custom domain name purchased.
+Deployed on **Vercel**. The owner already has a custom domain name purchased.
 
-### Option A: Vercel (Recommended for simplicity)
 - Connect GitHub repo → automatic deploys on every push
-- Automatic SSL, CDN, preview deploys
+- Automatic SSL, CDN, preview deploys, image optimization
 - Point custom domain via DNS (CNAME or A record to Vercel)
 - Zero server maintenance
-
-### Option B: Self-Hosted (via personal contact's server)
-- Use `next build` + `next start` behind a reverse proxy (Nginx or Caddy) for dynamic Next.js features
-- **OR** use `next export` (static output) to generate plain HTML/CSS/JS files — the server only needs to serve static files, which is simpler and more reliable
-- Requires manual setup for: SSL certificates (Let's Encrypt / Certbot), Node.js runtime (if not using static export), build pipeline (manually run builds or set up a webhook from GitHub), CDN (optional but recommended — Cloudflare free tier works well in front of any origin server)
-- Point custom domain DNS to the server's IP address
-
-**Recommendation:** If going self-hosted, prefer static export (`output: 'export'` in `next.config.js`) unless server-side features (API routes, ISR) are specifically needed. A fully static site is the most portable and lowest-maintenance option. Note: static export means no server-side API routes — any dynamic features (like a contact form backend) would need an external service.
+- No static export needed — Vercel runs Next.js natively
 
 ---
 

@@ -246,10 +246,7 @@ npm run start      # Start production server
 npm run lint       # Run ESLint
 ```
 
-For static export (self-hosted deployment):
-```bash
-npm run build      # Generates static output when output: 'export' is set in next.config.js
-```
+Deployed on **Vercel** — push to GitHub triggers automatic deploys.
 
 ## Architecture
 
@@ -303,6 +300,4 @@ Project pages support: `<ProjectImage>`, `<VideoEmbed>`, `<Callout>`.
 
 ## Deployment
 
-**Vercel (recommended):** Connect GitHub repo for automatic deploys. Custom domain via DNS CNAME/A record.
-
-**Self-hosted (static):** Set `output: 'export'` in `next.config.js`, run `next build`, serve the `out/` directory.
+**Vercel:** Connect GitHub repo for automatic deploys. Custom domain via DNS CNAME/A record. No static export needed — Vercel runs Next.js natively with SSR, API routes, and image optimization.

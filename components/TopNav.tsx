@@ -2,15 +2,93 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { FileDown, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 const navLinks = [
   { href: "/#experience", label: "Experience" },
   { href: "/#projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
+  // { href: "/blog", label: "Blog" },
   { href: "/gallery", label: "Gallery" },
 ];
+
+const childVariants = {
+  initial: { opacity: 0, filter: "blur(4px)" },
+  animate: { opacity: 1, filter: "blur(0px)" },
+  exit: { opacity: 0, filter: "blur(4px)" },
+};
+
+function ResumeButton() {
+  const [downloaded, setDownloaded] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  }, []);
+
+  return (
+    <motion.a
+      href="/resume.pdf"
+      download
+      className="inline-flex items-center gap-1.5 bg-neutral-900 text-white font-mono text-xs uppercase tracking-widest px-3 py-1.5 cursor-pointer overflow-hidden"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 400, damping: 20 }}
+      onClick={() => {
+        if (!downloaded) {
+          setDownloaded(true);
+          timeoutRef.current = setTimeout(() => setDownloaded(false), 2000);
+        }
+      }}
+      style={{ willChange: "transform" }}
+    >
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.span
+          key={downloaded ? "done" : "default"}
+          className="flex items-center gap-1.5"
+          layout="position"
+          initial={{ opacity: 0, filter: "blur(4px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, filter: "blur(4px)" }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 18,
+            staggerChildren: downloaded ? 0.15 : 0,
+          }}
+        >
+          <motion.span className="flex items-center" variants={childVariants}>
+            {downloaded ? (
+              <motion.svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <motion.path
+                  d="M4 12l5 5L20 6"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25, delay: 0.1 }}
+                />
+              </motion.svg>
+            ) : (
+              <FileDown size={12} />
+            )}
+          </motion.span>
+          <motion.span variants={childVariants}>
+            {downloaded ? "Downloaded!" : "Resume"}
+          </motion.span>
+        </motion.span>
+      </AnimatePresence>
+    </motion.a>
+  );
+}
 
 export default function TopNav() {
   const pathname = usePathname();
@@ -48,15 +126,7 @@ export default function TopNav() {
                 {label}
               </a>
             ))}
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-neutral-900 text-white font-mono text-xs uppercase tracking-widest px-3 py-1.5 hover:bg-neutral-700 transition-colors"
-            >
-              <FileDown size={12} />
-              Resume
-            </a>
+            <ResumeButton />
           </nav>
 
           {/* Mobile hamburger */}
@@ -88,14 +158,7 @@ export default function TopNav() {
                 {label}
               </a>
             ))}
-            <a
-              href="/resume.pdf"
-              download
-              className="flex items-center gap-1.5 bg-neutral-900 text-white font-mono text-xs uppercase tracking-widest px-3 py-1.5 w-fit hover:bg-neutral-700 transition-colors"
-            >
-              <FileDown size={12} />
-              Resume
-            </a>
+            <ResumeButton />
           </nav>
         </div>
       )}

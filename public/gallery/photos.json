@@ -2,56 +2,47 @@
   {
     "src": "/gallery/images/PeakofMountTamaplais.jpg",
     "title": "Peak of Mount Tamalpais",
-    "location": "Mill Valley, CA",
-    "date": "Feb 7th, 2026"
+    "location": "Mill Valley, CA"
   },
   {
     "src": "/gallery/images/TopofSlackerHill.jpg",
     "title": "The best view of San Francisco",
-    "location": "Slacker Hill, CA",
-    "date": "Jan 17th, 2026"
+    "location": "Slacker Hill, CA"
   },
   {
     "src": "/gallery/images/RocketLaunchatSantaMonica.jpg",
     "title": "Rocket launch at the Santa Monica Pier",
-    "location": "Santa Monica, CA",
-    "date": "Feb 14th, 2026"
+    "location": "Santa Monica, CA"
   },
   {
     "src": "/gallery/images/Palisades.JPG",
     "title": "Ripping it in Tahoe",
-    "location": "Olympic Valley, CA",
-    "date": "Jan 31st, 2026"
+    "location": "Olympic Valley, CA"
   },
   {
     "src": "/gallery/images/Mission Peak.jpg",
     "title": "MOO",
-    "location": "Mission Peak, CA",
-    "date": "Jan 10th, 2026"
+    "location": "Mission Peak, CA"
   },
   {
     "src": "/gallery/images/MountDiablo.jpeg",
     "title": "Frolicking",
-    "location": "Mount Diablo, CA",
-    "date": "Mar 7th, 2026"
+    "location": "Mount Diablo, CA"
   },
   {
     "src": "/gallery/images/HalfMoonBay.jpg",
-    "title": "Half Moon Bay",
-    "location": "Half Moon Bay, CA",
-    "date": "Jan 18th, 2026"
+    "title": "Stroll along the beach",
+    "location": "Half Moon Bay, CA"
   },
   {
     "src": "/gallery/images/Crab.jpg",
-    "title": "Crab",
+    "title": "Crab!!!",
     "location": "Half Moon Bay, CA",
-    "date": "Jan 18th, 2026",
     "objectPosition": "center 55%"
   },
   {
     "src": "/gallery/images/OverlookingTheGoldenGate.jpg",
-    "title": "Top of the world with the boys",
-    "location": "Marin Headlands, CA",
-    "date": "Jan 17th, 2026"
+    "title": "A big world out there",
+    "location": "Marin Headlands, CA"
   }
 ]

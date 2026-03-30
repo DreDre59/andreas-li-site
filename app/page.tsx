@@ -5,6 +5,7 @@ import ProjectsGallery from "@/components/ProjectsGallery";
 import AnimatedHeroTitle from "@/components/AnimatedHeroTitle";
 import AnimatedHeroContent from "@/components/AnimatedHeroContent";
 import FadeIn from "@/components/FadeIn";
+import AnimatedContactButton from "@/components/AnimatedContactButton";
 
 
 export default function Home() {
@@ -172,20 +173,17 @@ export default function Home() {
           </p>
         </FadeIn>
         <div className="flex items-center gap-4">
-          <a
+          <AnimatedContactButton
             href="https://www.linkedin.com/in/andreasli/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-xs text-neutral-900 border-2 border-neutral-900 px-5 py-3 hover:bg-neutral-900 hover:text-white transition-all duration-200 tracking-widest uppercase"
-          >
-            LinkedIn &rarr;
-          </a>
-          <a
+            label="LinkedIn →"
+            confirmLabel="Opened!"
+            external
+          />
+          <AnimatedContactButton
             href="mailto:andreas.li@uwaterloo.ca"
-            className="font-mono text-xs text-neutral-900 border-2 border-neutral-900 px-5 py-3 hover:bg-neutral-900 hover:text-white transition-all duration-200 tracking-widest uppercase"
-          >
-            Email &rarr;
-          </a>
+            label="Email →"
+            confirmLabel="Opened!"
+          />
         </div>
       </section>
     </div>

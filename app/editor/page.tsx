@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ForwardRefEditor } from '@/components/editor/ForwardRefEditor'
 import type { MDXEditorMethods } from '@mdxeditor/editor'
+import { notFound } from 'next/navigation'
 
 interface MDXFile {
   type: 'projects' | 'blog'
@@ -10,6 +11,9 @@ interface MDXFile {
 }
 
 export default function EditorPage() {
+  if (process.env.NODE_ENV === 'production') {
+    notFound()
+  }
   const editorRef = useRef<MDXEditorMethods>(null)
   const [files, setFiles] = useState<MDXFile[]>([])
   const [selected, setSelected] = useState<MDXFile | null>(null)

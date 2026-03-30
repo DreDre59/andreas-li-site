@@ -8,6 +8,9 @@ export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<{ type: string; slug: string }> }
 ) {
+  if (process.env.NODE_ENV === 'production') {
+    return NextResponse.json({ error: 'Not available' }, { status: 404 })
+  }
   const { type, slug } = await params
 
   if (!['projects', 'blog'].includes(type)) {

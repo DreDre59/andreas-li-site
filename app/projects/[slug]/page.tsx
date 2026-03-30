@@ -13,6 +13,28 @@ import Callout from "@/components/mdx/Callout";
 
 const components = { ProjectImage, VideoEmbed, Callout };
 
+const tagPalette = [
+  "bg-sky-50 text-sky-800",
+  "bg-amber-50 text-amber-800",
+  "bg-violet-50 text-violet-800",
+  "bg-emerald-50 text-emerald-800",
+  "bg-rose-50 text-rose-800",
+];
+
+function assignTagColors(tags: string[]) {
+  // Shuffle palette deterministically using first tag's hash as seed
+  let seed = 0;
+  for (const ch of (tags[0] ?? "")) seed = (seed * 31 + ch.charCodeAt(0)) | 0;
+  const shuffled = [...tagPalette];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    seed = (seed * 16807 + 0) | 0;
+    const j = Math.abs(seed) % (i + 1);
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  // Assign colors cycling through the shuffled palette
+  return tags.map((_, i) => shuffled[i % shuffled.length]);
+}
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -79,14 +101,17 @@ export default async function ProjectPage({ params }: Props) {
           {frontmatter.description as string}
         </p>
         <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="font-mono text-xs text-neutral-500 bg-neutral-50 border border-neutral-200 px-2.5 py-1 rounded-sm"
-            >
-              {tag}
-            </span>
-          ))}
+          {(() => {
+            const colors = assignTagColors(tags);
+            return tags.map((tag, i) => (
+              <span
+                key={tag}
+                className={`font-mono text-xs font-medium px-2.5 py-1 ${colors[i]}`}
+              >
+                {tag}
+              </span>
+            ));
+          })()}
         </div>
       </header>
 

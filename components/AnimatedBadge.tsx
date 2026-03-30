@@ -39,7 +39,7 @@ export default function AnimatedBadge({
           ? { backgroundColor: colors.bg, color: colors.text }
           : { backgroundColor: "rgba(0,0,0,0)", color: "rgb(115 115 115)" }
       }
-      transition={{ duration: 0.75, ease: "easeOut", delay: isInView ? delay : 0 }}
+      transition={{ duration: 1.125, ease: "easeOut", delay: isInView ? 0.5 + delay * 1.5 : 0 }}
     >
       {children}
     </motion.span>
