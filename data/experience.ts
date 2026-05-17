@@ -15,14 +15,12 @@ const experience: ExperienceEntry[] = [
     role: "Vehicle Design Intern - Seatbelts",
     start: "Jan 2026",
     end: "Present",
-    skills: ["Catia 3DX", "Python", "PID Control"],
+    skills: ["Catia 3Dx","Python", "BLDC Integration" ,"Firmware (FSM / Control Logic)"],
     logo: "Tesla_Logo.png",
     image: "Tesla-Cybercab-Robovan.jpg",
-    description: `Supporting the development of new seatbelt technologies for use in the Cybercab and future programs.
+    description: `On the Passive Safety and Restraints team, supported the development of next-generation seatbelt technology for the Cybercab and future programs.
 
-Developed a lifecycle test machine in Catia 3DX to test a seatbelt component over 75,000+ cycles, ensuring DFA and maintainability.
-Selected and integrated a BLDC motor and controller for lifecycle test hardware meeting calculated load requirements.
-    `,
+Designed an automated durability rig in Catia 3DX to validate a seatbelt component through tens of thousands of unattended test cycles, integrating a BLDC motor, encoder, and custom firmware for continuous overnight operation. Also designed and built an imaging station and jig and a Python/OpenCV pipeline to characterize a passive safety component, establishing Tesla's first internal method for doing so.`,
   },
   {
     company: "Social and Intelligent Robotics Research Lab",

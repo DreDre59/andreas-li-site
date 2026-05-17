@@ -43,7 +43,7 @@ export default function AnimatedHeroContent() {
           <li className="font-display text-sm text-neutral-500 leading-relaxed flex gap-3">
             <span className="text-neutral-300 shrink-0 mt-0.5 select-none">—</span>
             <span>
-              interning at <AB color="bg-rose-50 text-rose-800" delay={0.1}>Tesla as a vehicle design engineer </AB>for passive safety systems, working on seatbelt technology to keep people safe
+              interned at <AB color="bg-rose-50 text-rose-800" delay={0.1}>Tesla as a vehicle design engineer </AB>for passive safety systems, working on seatbelt technology to keep people safe
             </span>
           </li>
           <li className="font-display text-sm text-neutral-500 leading-relaxed flex gap-3">
