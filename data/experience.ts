@@ -12,7 +12,7 @@ export interface ExperienceEntry {
 const experience: ExperienceEntry[] = [
   {
     company: "Tesla",
-    role: "Vehicle Design Intern - Seatbelts",
+    role: "Mechatronics Design Intern - Seatbelts",
     start: "Jan 2026",
     end: "Present",
     skills: ["Catia 3Dx","Python", "BLDC Integration" ,"Firmware (FSM / Control Logic)"],
